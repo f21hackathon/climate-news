@@ -19,6 +19,6 @@ app.use((err, req, res, next) => {
 	res.status.send(`500 - Server Error`);
 });
 
-app.listen(PORT, () => {
+app.listen(process.env.PORT || PORT, () => {
 	console.log(`Server is listening on port: ${PORT}`);
 });
