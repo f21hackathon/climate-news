@@ -29,17 +29,14 @@ const App = () => {
 
 	return (
 		<div className="App">
-			<div>
-				<PrimarySearchAppBar />
-			</div>
+			<PrimarySearchAppBar />
 
-			<div>
-				<Map />
-			</div>
-			
 			<div className="app-container">
-				<h1>Climate News</h1>
-				<Articles articles={articles} />
+				<Map />
+				<div className="news-container">
+					<h1 className="news-title">Climate News</h1>
+					<Articles articles={articles} />
+				</div>
 			</div>
 		</div>
 	);
