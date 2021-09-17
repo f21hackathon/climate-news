@@ -16,7 +16,8 @@ db.once("open", () => {
 
 // Define Schema
 const articleSchema = mongoose.Schema({
-	author: { type: String, required: true },
+	country: { type: String, required: true },
+	author: { type: String, default: '' },
 	content: { type: String, required: true },
 	description: { type: String, required: true },
 	publishedAt: { type: String, required: true },
@@ -26,13 +27,14 @@ const articleSchema = mongoose.Schema({
 	},
 	title: { type: String, required: true },
 	url: { type: String, required: true },
-	urlToImage: { type: String, required: true },
+	urlToImage: { type: String, default: '' },
 });
 
 const Article = mongoose.model("Article", articleSchema);
 
-const addArticle = async (articleObj) => {
+const addArticle = async (country, articleObj) => {
 	const article = new Article({
+		country: country,
 		author: articleObj.author,
 		content: articleObj.content,
 		description: articleObj.description,
