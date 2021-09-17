@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Articles from "./Articles";
+import Articles from "./Components/Articles";
 import "./App.css";
-import Map from "./Map";
+import Map from "./Components/Map";
 import PrimarySearchAppBar from "./Components/AppBar";
 
 const API_KEY = "3a09f01bf6174499b438bfaa14eea1f5"; //News API Key
