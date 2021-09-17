@@ -29,7 +29,7 @@ const Map = () => (
 					cx={250}
 					cy={250}
 					r={220}
-					fill="transparent"
+					fill="rgb(165, 212, 168)"
 					stroke="#CFD8DC"
 				/>
 				<Geographies
