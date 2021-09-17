@@ -4,6 +4,10 @@
 	justify-content: center;
 }
 
+.circle {
+	background-color: rgb(240, 0, 240)
+}
+
 .map-container:hover {
 	cursor: pointer;
 }
