@@ -1,0 +1,15 @@
+.map-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 70%;
+	max-height: 100vh;
+}
+
+.circle {
+	background-color: rgb(240, 0, 240);
+}
+
+.map-container:hover {
+	cursor: pointer;
+}
