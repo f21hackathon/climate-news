@@ -1,0 +1,15 @@
+.articles-container {
+	width: 50%;
+}
+
+.article {
+	background-color: white;
+	border-radius: 10px;
+	padding: 1em;
+	margin: 1em;
+}
+
+.image {
+	width: 250px;
+	border-radius: 10px;
+}
