@@ -11,7 +11,7 @@ import {
 import "./Map.css";
 
 const mapStyles = {
-	width: "40%",
+	width: "60%",
 	height: "auto",
 };
 
