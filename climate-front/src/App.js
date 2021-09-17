@@ -5,22 +5,16 @@ import "./App.css";
 import Map from "./Components/Map";
 import PrimarySearchAppBar from "./Components/AppBar";
 
-const API_KEY = "3a09f01bf6174499b438bfaa14eea1f5"; //News API Key
-// const API_KEY = process.env.REACT_APP_API_KEY;
-// console.log("API KEY: ", API_KEY);
-
 const App = () => {
 	const country = "Mexico";
 	const [articles, setArticles] = useState([]);
 
-	const URL = `https://newsapi.org/v2/everything?q=climate OR energy OR environment OR global warming OR climate AND ${country} change&pageSize=100&from=2021&sortBy=relevancy&apiKey=${API_KEY}`;
+	const ARTICLES_URI = "https://gcn-api-dev.herokuapp.com:443/articles";
 
 	const getNewsData = async () => {
-		const res = await axios.get(URL);
+		const res = await axios.get(ARTICLES_URI);
 		const data = res.data;
-		const newsArticles = data.articles;
-		setArticles(newsArticles);
-		console.log(newsArticles);
+		setArticles(data);
 	};
 
 	useEffect(() => {
