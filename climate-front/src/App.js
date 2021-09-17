@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Articles from "./Articles";
 import "./App.css";
+import Map from "./Map";
 
 const API_KEY = "3a09f01bf6174499b438bfaa14eea1f5"; //News API Key
 // const API_KEY = process.env.REACT_APP_API_KEY;
@@ -27,6 +28,7 @@ const App = () => {
 
 	return (
 		<div className="App">
+			<Map />
 			<div className="app-container">
 				<h1>Climate News</h1>
 				<Articles articles={articles} />
