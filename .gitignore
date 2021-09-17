@@ -1,0 +1,33 @@
+#### FRONTEND ####
+# dependencies
+climate-front/node_modules
+climate-front/.pnp
+climate-front.pnp.js
+
+# testing
+climate-front/coverage
+
+# production
+climate-front/build
+
+# misc
+climate-front/.DS_Store
+climate-front/.env.local
+climate-front/.env.development.local
+climate-front/.env.test.local
+climate-front/.env.production.local
+
+climate-front/npm-debug.log*
+climate-front/yarn-debug.log*
+climate-front/yarn-error.log*
+
+climate-front/API_KEYS
+
+climate-front/package-lock.json
+
+#### API ####
+# dependencies
+api/node_modules
+
+# misc
+api/package-lock.json
