@@ -16,7 +16,7 @@ const App = () => {
 	const [articles, setArticles] = useState([]);
 	const [selectedCountry, setSelectedCountry] = useState("");
 	const [statusCode, setStatusCode] = useState("");
-	const [stats, setStats] = useState([]);
+	const [countryStats, setCountryStats] = useState([]);
 
 	console.log("STATUS CODE: ", statusCode);
 
@@ -25,13 +25,11 @@ const App = () => {
 	};
 
 	const getCountryStats = async (country) => {
-		setStats([]);
-		setStatusCode("");
 		const STATS_URI = `https://gcn-api-dev.herokuapp.com:443/climate-data/${country}`;
 		const res = await axios.get(STATS_URI);
-		if (res.statusCode === 200) setStatusCode("200");
-		setStats(res);
-	}
+		const data = res.data;
+		setCountryStats(data);
+	};
 
 	const getNewsData = async (country) => {
 		setArticles([]);
@@ -58,7 +56,7 @@ const App = () => {
 			<Navbar countries={countryList} updateCountryName={updateCountryName} />
 
 			<div className="app-container">
-				{selectedCountry ? <CountryModal country={selectedCountry} stats={stats}/> : null}
+				{selectedCountry ? <CountryModal country={selectedCountry} stats={countryStats}/> : null}
 
 				<Map clickCountry={clickCountry} selectedCountry={selectedCountry} />
 				{selectedCountry ? (
