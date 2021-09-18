@@ -2,7 +2,7 @@ import React from "react";
 import "./styles/CountryModal.css";
 import CountryStatsList from "./CountryStatsList";
 
-const CountryModal = ({ country }) => {
+const CountryModal = ({ country, stats }) => {
 	console.log("MODAL: ", country);
 
 	return (
@@ -13,7 +13,7 @@ const CountryModal = ({ country }) => {
 			</div>
 
 			<div className="country-stats">
-				<CountryStatsList />
+				<CountryStatsList countryData={stats}/>
 			</div>
 
 		</div>
