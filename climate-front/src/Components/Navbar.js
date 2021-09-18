@@ -77,10 +77,10 @@ const Navbar = ({ countries }) => {
 						sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}>
 						<u>Climate News</u>
 					</Typography>
-					<Search>
+					{/* <Search>
 						<SearchIconWrapper>
 							<SearchIcon />
-						</SearchIconWrapper>
+						</SearchIconWrapper> */}
 						{/* <StyledInputBase
 							placeholder="Search for a country"
 							inputProps={{ "aria-label": "search" }}
@@ -88,7 +88,7 @@ const Navbar = ({ countries }) => {
 							onSubmit={(e) => handleSubmit(e)}
 						/> */}
 						<FreeSoloCreateOption countries={countries} />
-					</Search>
+					{/* </Search> */}
 				</Toolbar>
 			</AppBar>
 		</Box>

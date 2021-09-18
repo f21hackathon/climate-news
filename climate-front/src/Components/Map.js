@@ -13,7 +13,7 @@ import "./styles/Map.css";
 
 const mapStyles = {
 	width: "90%",
-	height: "auto",
+	height: "100%",
 };
 
 var countryDetails = require("../country_details.js");
