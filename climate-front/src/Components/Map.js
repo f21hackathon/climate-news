@@ -16,7 +16,7 @@ const mapStyles = {
 	height: "auto",
 };
 
-const Map = ({ clickCountry }) => {
+const Map = ({ clickCountry, selectedCountry }) => {
 	return (
 		<div className="map-container">
 			<ComposableMap
@@ -46,7 +46,13 @@ const Map = ({ clickCountry }) => {
 									geography={geo}
 									projection={proj}
 									style={{
-										default: { fill: "rgb(165, 212, 168)" },
+										default: {
+											fill:
+												selectedCountry &&
+												geo.id === selectedCountry.three_digit_ISO_country_code
+													? "orange"
+													: "rgb(165, 212, 168)",
+										},
 									}}
 								/>
 							))
