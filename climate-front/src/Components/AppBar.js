@@ -44,9 +44,9 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     transition: theme.transitions.create('width'),
     width: '100%',
     [theme.breakpoints.up('sm')]: {
-      width: '12ch',
+      width: '32ch',
       '&:focus': {
-        width: '20ch',
+        width: '40ch',
       },
     },
   },
@@ -61,13 +61,12 @@ const SearchAppBar = () => {
     if (e.keyCode === 13) {
       console.log(e.target.value)
     }
-  }
+  };
 
   const handleChange = (e) => {
     console.log(e.target.value);
     setCountry(e.target.value);
   };
-
 
 
   return (
