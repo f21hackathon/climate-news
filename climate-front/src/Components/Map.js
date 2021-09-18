@@ -12,8 +12,8 @@ import {
 import "./styles/Map.css";
 
 const mapStyles = {
-	width: "60%",
-	height: "auto",
+	width: "90%",
+	height: "100%",
 };
 
 var countryDetails = require("../country_details.js");
