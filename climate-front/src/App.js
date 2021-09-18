@@ -21,13 +21,13 @@ const App = () => {
 		setSelectedCountry("SELECTED: ", countryInput);
 	};
 
-	const ARTICLES_URI = "https://gcn-api-dev.herokuapp.com:443/articles";
-
-	const getNewsData = async () => {
+	const getNewsData = async (country) => {
+		const ARTICLES_URI = `https://gcn-api-dev.herokuapp.com:443/articles`;
 		const res = await axios.get(ARTICLES_URI);
 		const data = res.data;
-		const updatedArticles = [...articles, data];
 		setArticles(data);
+
+		// console.log("ARTICLES: ", data);
 	};
 
 	// Find country by clicking on map
@@ -36,7 +36,11 @@ const App = () => {
 			(x) => x.three_digit_ISO_country_code === geo.id.toString()
 		)[0];
 		setSelectedCountry(foundCountry);
-		console.log(foundCountry);
+		// console.log("FOUND COUNTRY: ", foundCountry);
+
+		// get news for a country after clicking on it
+		// GET /:country is working properly in backend yet
+		getNewsData();
 	};
 
 	useEffect(() => {
@@ -52,14 +56,15 @@ const App = () => {
 				{selectedCountry ? <CountryModal country={selectedCountry} /> : null}
 
 				<Map clickCountry={clickCountry} />
-
-				<div className="news-container">
-					{articles.length > 0 ? (
-						<Articles articles={articles} />
-					) : (
-						<LoadingCards />
-					)}
-				</div>
+				{selectedCountry ? (
+					<div className="news-container">
+						{articles.length > 0 ? (
+							<Articles articles={articles} />
+						) : (
+							<LoadingCards />
+						)}
+					</div>
+				) : null}
 			</div>
 		</div>
 	);
