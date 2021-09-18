@@ -13,6 +13,10 @@ import "./App.css";
 import CountryModal from "./Components/CountryModal";
 
 const App = () => {
+	useEffect(() => {
+		document.title = "Climate News"
+	}, []);
+
 	const country = "Mexico";
 	const [articles, setArticles] = useState([]);
 	const [selectedCountry, setSelectedCountry] = useState("");
