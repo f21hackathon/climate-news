@@ -7,6 +7,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
+import FreeSoloCreateOption from "./SearchBar";
 
 const Search = styled("div")(({ theme }) => ({
 	position: "relative",
@@ -50,21 +51,20 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 	},
 }));
 
-const SearchAppBar = () => {
+const Navbar = ({ countries }) => {
 	// Handles updating state when something is typed in the search bar
 	const [country, setCountry] = useState("");
 
-	// Handles on enter
-	const keyPress = (e) => {
-		if (e.keyCode === 13) {
-			console.log(e.target.value);
-		}
-	};
+	// // Handles on enter
+	// const handleSubmit = (e) => {
+	// 	e.preventDefault();
+	// 	console.log("COUNRY: ", country);
+	// };
 
-	const handleChange = (e) => {
-		console.log(e.target.value);
-		setCountry(e.target.value);
-	};
+	// const handleChange = (e) => {
+	// 	e.preventDefault();
+	// 	setCountry(e.target.value);
+	// };
 
 	return (
 		<Box sx={{ flexGrow: 1 }}>
@@ -81,12 +81,13 @@ const SearchAppBar = () => {
 						<SearchIconWrapper>
 							<SearchIcon />
 						</SearchIconWrapper>
-						<StyledInputBase
+						{/* <StyledInputBase
 							placeholder="Search for a country"
 							inputProps={{ "aria-label": "search" }}
 							onChange={(e) => handleChange(e)}
-							onKeyDown={(e) => keyPress(e)}
-						/>
+							onSubmit={(e) => handleSubmit(e)}
+						/> */}
+						<FreeSoloCreateOption countries={countries} />
 					</Search>
 				</Toolbar>
 			</AppBar>
@@ -94,4 +95,4 @@ const SearchAppBar = () => {
 	);
 };
 
-export default SearchAppBar;
+export default Navbar;
