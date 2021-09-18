@@ -14,10 +14,9 @@ import CountryModal from "./Components/CountryModal";
 
 const App = () => {
 	useEffect(() => {
-		document.title = "Climate News"
+		document.title = "Climate News";
 	}, []);
 
-	const country = "Mexico";
 	const [articles, setArticles] = useState([]);
 	const [selectedCountry, setSelectedCountry] = useState("");
 
@@ -26,12 +25,11 @@ const App = () => {
 	};
 
 	const getNewsData = async (country) => {
-		const ARTICLES_URI = `https://gcn-api-dev.herokuapp.com:443/articles`;
+		setArticles([]);
+		const ARTICLES_URI = `https://gcn-api-dev.herokuapp.com:443/articles/${country}`;
 		const res = await axios.get(ARTICLES_URI);
 		const data = res.data;
 		setArticles(data);
-
-		// console.log("ARTICLES: ", data);
 	};
 
 	// Find country by clicking on map
@@ -40,23 +38,14 @@ const App = () => {
 			(x) => x.three_digit_ISO_country_code === geo.id.toString()
 		)[0];
 		setSelectedCountry(foundCountry);
-		// console.log("FOUND COUNTRY: ", foundCountry);
-
-		// get news for a country after clicking on it
-		// GET /:country is working properly in backend yet
-		getNewsData();
+		getNewsData(foundCountry.country);
 	};
-
-	useEffect(() => {
-		getNewsData();
-	}, []);
 
 	return (
 		<div className="App">
 			<Navbar countries={countryList} updateCountryName={updateCountryName} />
 
 			<div className="app-container">
-
 				{selectedCountry ? <CountryModal country={selectedCountry} /> : null}
 
 				<Map clickCountry={clickCountry} selectedCountry={selectedCountry} />
