@@ -34,26 +34,37 @@ const articleSchema = mongoose.Schema({
 const Article = mongoose.model("Article", articleSchema);
 
 const addArticle = async (country, articleObj) => {
-	const article = new Article({
-		country: country,
-		author: articleObj.author,
-		content: articleObj.content,
-		description: articleObj.description,
-		publishedAt: articleObj.publishedAt,
-		source: {
-			id: articleObj.source.id,
-			name: articleObj.source.name,
-		},
-		title: articleObj.title,
-		url: articleObj.url,
-		urlToImage: articleObj.urlToImage,
+	// Only add article if an article with same title does not exist
+	Article.findOne({title: articleObj.title}, function(err, result) {
+		if (err) {
+			return;
+		}
+		if (result) {
+			return;
+		} else {
+			const article = new Article({
+				country: country,
+				author: articleObj.author,
+				content: articleObj.content,
+				description: articleObj.description,
+				publishedAt: articleObj.publishedAt,
+				source: {
+					id: articleObj.source.id,
+					name: articleObj.source.name,
+				},
+				title: articleObj.title,
+				url: articleObj.url,
+				urlToImage: articleObj.urlToImage,
+			});
+
+			return article.save();
+		}
 	});
-	return article.save();
 };
 
 const findArticles = async (country = "USA") => {
 	await insertNewsArticles(country);
-	await sleep(2000);
+	await sleep(4000);
 	return await loadNewsArticles(country);
 };
 
@@ -83,11 +94,11 @@ async function insertNewsArticles(country) {
 }
 
 async function getNewsArticles(country) {
-	const NEWS_API_KEY = "3a09f01bf6174499b438bfaa14eea1f5";
+	const NEWS_API_KEY = "5612223de971402996a0a1f3130c00d2"
 	const URL =
 		`https://newsapi.org/v2/everything?` +
 		`q=+${country} energy environment "global warming"` +
-		`change&pageSize=100&from=2021&sortBy=publishedAt&apiKey=${NEWS_API_KEY}`;
+		`change&pageSize=20&from=2021&sortBy=publishedAt&apiKey=${NEWS_API_KEY}`;
 
 	try {
 		return await axios.get(URL);

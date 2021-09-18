@@ -16,7 +16,10 @@ const mapStyles = {
 	height: "auto",
 };
 
-const Map = ({ clickCountry, selectedCountry }) => {
+var countryDetails = require('../country_details.js');
+
+
+const Map = ({ clickCountry }) => {
 	return (
 		<div className="map-container">
 			<ComposableMap

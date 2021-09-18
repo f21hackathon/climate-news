@@ -13,6 +13,10 @@ import "./App.css";
 import CountryModal from "./Components/CountryModal";
 
 const App = () => {
+	useEffect(() => {
+		document.title = "Climate News"
+	}, []);
+
 	const country = "Mexico";
 	const [articles, setArticles] = useState([]);
 	const [selectedCountry, setSelectedCountry] = useState("");
@@ -52,6 +56,7 @@ const App = () => {
 			<Navbar countries={countryList} updateCountryName={updateCountryName} />
 
 			<div className="app-container">
+
 				{selectedCountry ? <CountryModal country={selectedCountry} /> : null}
 
 				<Map clickCountry={clickCountry} selectedCountry={selectedCountry} />
