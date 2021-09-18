@@ -28,7 +28,7 @@ const App = () => {
 			<div className="app-container">
 				<Map />
 				<div className="news-container">
-					<h1 className="news-title">Climate News</h1>
+					<h1 className="news-title"><u>Climate News</u></h1>
 					<Articles articles={articles} />
 				</div>
 			</div>

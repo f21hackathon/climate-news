@@ -77,7 +77,7 @@ const SearchAppBar = () => {
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
           >
-            Climate News
+            <u>Climate News</u>
           </Typography>
           <Search>
             <SearchIconWrapper>
