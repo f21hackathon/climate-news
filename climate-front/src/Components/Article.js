@@ -5,18 +5,19 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import Loading from "./Loading";
 
 export default function ImgMediaCard({ article }) {
 	return (
 		<Card className="article">
 			<a className="article-link" href={article.url} target="_blank">
 				<CardMedia
-					// className="image"
 					component="img"
 					alt={article.urlToImage}
 					height="140"
 					image={article.urlToImage}
 				/>
+
 				<CardContent>
 					<Typography
 						gutterBottom

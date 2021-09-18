@@ -1,6 +1,5 @@
 .articles-container {
 	width: 100%;
-	background-color: rgb(230, 230, 230);
 	display: flex;
 	flex-direction: column;
 	align-items: center;

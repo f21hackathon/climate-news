@@ -1,14 +1,20 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+
 import Articles from "./Components/Articles";
-import "./App.css";
 import Map from "./Components/Map";
 import PrimarySearchAppBar from "./Components/AppBar";
+import Loading from "./Components/Loading";
+import LoadingCard from "./Components/LoadingCard";
+
+import "./App.css";
 
 const App = () => {
 	const country = "Mexico";
 	const [articles, setArticles] = useState([]);
 	const [countryName, setCountryName] = useState("");
+
+	console.log("ARTICLES: ", articles);
 
 	const updateCountryName = (countryInput) => {
 		console.log(countryInput);
@@ -20,6 +26,8 @@ const App = () => {
 	const getNewsData = async () => {
 		const res = await axios.get(ARTICLES_URI);
 		const data = res.data;
+		const updatedArticles = [...articles, data];
+		console.log("Updated Articles: ", updatedArticles);
 		setArticles(data);
 	};
 
@@ -35,7 +43,12 @@ const App = () => {
 				<Map />
 
 				<div className="news-container">
-					<Articles articles={articles} />
+					{articles.length > 0 ? (
+						<Articles articles={articles} />
+					) : (
+						<LoadingCard />
+					)}
+					{/* <Articles articles={articles} /> */}
 				</div>
 			</div>
 		</div>
