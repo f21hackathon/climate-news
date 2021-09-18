@@ -26,6 +26,7 @@
 .news-container {
 	width: 30%;
 	max-height: 100vh;
-	background-color: rgb(175, 171, 171);
+	/* background-color: rgb(175, 171, 171); */
+	background-color: white;
 	overflow: scroll;
 }

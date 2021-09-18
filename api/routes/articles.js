@@ -38,4 +38,14 @@ router.get("/", async (req, res, next) => {
 	}
 });
 
+// Retrieve news by country
+router.get("/:country", async (req, res, next) => {
+	try {
+		const articles = await findArticles(req.params.country);
+		res.status(200).send(articles);
+	} catch (err) {
+		res.status(500).send(err);
+	}
+});
+
 module.exports = router;
