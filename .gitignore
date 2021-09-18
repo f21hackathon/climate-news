@@ -31,3 +31,6 @@ api/node_modules
 
 # misc
 api/package-lock.json
+
+#### OTHER ####
+.vim/
