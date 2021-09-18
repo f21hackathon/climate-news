@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState } from 'react';
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -51,7 +52,24 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function SearchAppBar() {
+const SearchAppBar = () => {
+  // Handles updating state when something is typed in the search bar
+  const [country, setCountry] = useState("")
+
+  // Handles on enter
+  const keyPress = (e) => {
+    if (e.keyCode === 13) {
+      console.log(e.target.value)
+    }
+  }
+
+  const handleChange = (e) => {
+    console.log(e.target.value);
+    setCountry(e.target.value);
+  };
+
+
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -80,6 +98,8 @@ export default function SearchAppBar() {
             <StyledInputBase
               placeholder="Search…"
               inputProps={{ 'aria-label': 'search' }}
+              onChange = {(e) => handleChange(e)}
+              onKeyDown = {(e) => keyPress(e)}
             />
           </Search>
         </Toolbar>
@@ -87,3 +107,5 @@ export default function SearchAppBar() {
     </Box>
   );
 }
+
+export default SearchAppBar;
