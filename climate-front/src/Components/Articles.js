@@ -12,7 +12,7 @@ const Articles = ({ articles }) => {
 						</h4>
 						<hr />
 						<img className="image" src={x.urlToImage} alt={x.urlToImage}></img>
-						<p>Link: {x.url}</p>
+						<p>Link: <a href={x.url}>{x.url}</a></p>
 						<p>{x.description}</p>
 					</div>
 				);
