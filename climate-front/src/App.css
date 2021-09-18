@@ -33,3 +33,11 @@
 	background-color: red;
 	border-radius: 10px;
 }
+
+.country-card {
+	width: 30%;
+	margin-left: 2%;
+	max-height: 85vh;
+	background-color: red;
+	border-radius: 10px;
+}

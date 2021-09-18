@@ -32,10 +32,15 @@ const App = () => {
 			<PrimarySearchAppBar updateCountryName={updateCountryName} />
 
 			<div className="app-container">
+
+				<div className="country-card">
+					<p>Country Card</p>
+				</div>
+
 				<Map />
 
 				<div className="news-container">
-					<Articles articles={articles} />
+					
 				</div>
 			</div>
 		</div>
