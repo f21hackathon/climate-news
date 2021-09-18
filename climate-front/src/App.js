@@ -10,6 +10,7 @@ import LoadingCards from "./Components/LoadingCards";
 import { countryList } from "./countryList";
 
 import "./App.css";
+import CountryModal from "./Components/CountryModal";
 
 const App = () => {
 	const country = "Mexico";
@@ -17,7 +18,7 @@ const App = () => {
 	const [selectedCountry, setSelectedCountry] = useState("");
 
 	const updateCountryName = (countryInput) => {
-		setSelectedCountry(countryInput);
+		setSelectedCountry("SELECTED: ", countryInput);
 	};
 
 	const ARTICLES_URI = "https://gcn-api-dev.herokuapp.com:443/articles";
@@ -26,7 +27,6 @@ const App = () => {
 		const res = await axios.get(ARTICLES_URI);
 		const data = res.data;
 		const updatedArticles = [...articles, data];
-		console.log("Updated Articles: ", updatedArticles);
 		setArticles(data);
 	};
 
@@ -34,8 +34,8 @@ const App = () => {
 	const clickCountry = (geo) => {
 		const foundCountry = countryList.filter(
 			(x) => x.ISO === geo.id.toString()
-		)[0].country;
-		setSelectedCountry(setSelectedCountry);
+		)[0];
+		setSelectedCountry(foundCountry);
 		console.log(foundCountry);
 	};
 
@@ -48,6 +48,8 @@ const App = () => {
 			<Navbar countries={countryList} updateCountryName={updateCountryName} />
 
 			<div className="app-container">
+				{selectedCountry ? <CountryModal country={selectedCountry} /> : null}
+
 				<Map clickCountry={clickCountry} />
 
 				<div className="news-container">
@@ -56,7 +58,6 @@ const App = () => {
 					) : (
 						<LoadingCards />
 					)}
-					{/* <Articles articles={articles} /> */}
 				</div>
 			</div>
 		</div>
