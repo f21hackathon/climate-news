@@ -17,10 +17,6 @@ const mapStyles = {
 };
 
 const Map = () => (
-	const getCoords = (geo) => {
-		console.log(geo)
-	}
-return (
 	<div className="map-container">
 		<ComposableMap
 			width={500}
@@ -79,8 +75,6 @@ return (
 			</ZoomableGlobe>
 		</ComposableMap>
 	</div>
-)
-
 );
 
 export default Map;

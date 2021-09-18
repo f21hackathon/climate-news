@@ -8,6 +8,12 @@ import PrimarySearchAppBar from "./Components/AppBar";
 const App = () => {
 	const country = "Mexico";
 	const [articles, setArticles] = useState([]);
+	const [countryName, setCountryName] = useState("")
+
+	const updateCountryName = (countryInput) => {
+		console.log(countryInput);
+		setCountryName(countryInput)
+	}
 
 	const ARTICLES_URI = "https://gcn-api-dev.herokuapp.com:443/articles";
 
@@ -23,10 +29,13 @@ const App = () => {
 
 	return (
 		<div className="App">
-			<PrimarySearchAppBar />
+			<PrimarySearchAppBar updateCountryName={updateCountryName}/>
 
 			<div className="app-container">
 				<Map />
+				<div>
+
+				</div>
 				<div className="news-container">
 					<h1 className="news-title"><u>Climate News</u></h1>
 					<Articles articles={articles} />

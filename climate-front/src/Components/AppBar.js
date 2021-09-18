@@ -50,6 +50,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 	},
 }));
 
+<<<<<<< HEAD
 const SearchAppBar = () => {
 	// Handles updating state when something is typed in the search bar
 	const [country, setCountry] = useState("");
@@ -60,6 +61,19 @@ const SearchAppBar = () => {
 			console.log(e.target.value);
 		}
 	};
+=======
+const SearchAppBar = (props) => {
+  // Handles updating state when something is typed in the search bar
+  const [country, setCountry] = useState("")
+
+  // Handles on enter
+  const keyPress = (e) => {
+    if (e.keyCode === 13) {
+      console.log(e.target.value);
+      setCountry(e.target.value)
+    }
+  };
+>>>>>>> upstream/dev
 
 	const handleChange = (e) => {
 		console.log(e.target.value);
