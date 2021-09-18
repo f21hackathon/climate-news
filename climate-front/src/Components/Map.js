@@ -6,6 +6,7 @@ import {
 	Geography,
 	Markers,
 	Marker,
+	ZoomableGroup,
 } from "react-simple-maps";
 
 import "./Map.css";
@@ -16,6 +17,10 @@ const mapStyles = {
 };
 
 const Map = () => (
+	const getCoords = (geo) => {
+		console.log(geo)
+	}
+return (
 	<div className="map-container">
 		<ComposableMap
 			width={500}
@@ -29,7 +34,7 @@ const Map = () => (
 					cx={250}
 					cy={250}
 					r={220}
-					fill="rgb(165, 212, 168)"
+					fill="#80a2d9"
 					stroke="#CFD8DC"
 				/>
 				<Geographies
@@ -38,12 +43,13 @@ const Map = () => (
 					{(geos, proj) =>
 						geos.map((geo, i) => (
 							<Geography
-								onClick={() => console.log(geo)}
+								className="geography"
+								onClick={() => getCoords(geo)}
 								key={geo.id + i}
 								geography={geo}
 								projection={proj}
 								style={{
-									default: { fill: "#80a2d9" },
+									default: { fill: "rgb(165, 212, 168)" },
 								}}
 							/>
 						))
@@ -73,6 +79,8 @@ const Map = () => (
 			</ZoomableGlobe>
 		</ComposableMap>
 	</div>
+)
+
 );
 
 export default Map;
