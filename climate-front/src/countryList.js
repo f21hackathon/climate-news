@@ -1294,19 +1294,19 @@ export const countryList = [
 		country: "Sint Maarten",
 		image: "https://flagcdn.com/96x72/sx.png",
 		ISOcode: "sx",
-		three_digit_ISO_country_code: "534"
+		three_digit_ISO_country_code: "534",
 	},
 	{
 		country: "Syria",
 		image: "https://flagcdn.com/96x72/sy.png",
 		ISOcode: "sy",
-		three_digit_ISO_country_code: "760"
+		three_digit_ISO_country_code: "760",
 	},
 	{
 		country: "Eswatini (Swaziland)",
 		image: "https://flagcdn.com/96x72/sz.png",
 		ISOcode: "sz",
-		three_digit_ISO_country_code: "748"
+		three_digit_ISO_country_code: "748",
 	},
 	{
 		country: "Turks and Caicos Islands",
@@ -1534,4 +1534,3 @@ export const countryList = [
 		three_digit_ISO_country_code: "716",
 	},
 ];
-
