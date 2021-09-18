@@ -15,15 +15,13 @@ import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 
 
 const CountryStatsList = ({ countryData }) => {
-    const [dense, setDense] = React.useState(false);
-    const [secondary, setSecondary] = React.useState(false);
 
     return (
         <Box sx={{ flexGrow: 0, maxWidth: 752 }}>
             <Typography sx={{ mb: 2 }} variant="h6" component="div">
-                <u>Country Environmental Stats</u>
+                <b>Country Environmental Stats</b>
             </Typography>
-            <List dense={dense}>
+            <List>
                 <ListItem>
                     <ListItemAvatar>
                         <Avatar>
