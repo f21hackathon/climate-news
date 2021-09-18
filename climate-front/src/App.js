@@ -14,13 +14,10 @@ import "./App.css";
 const App = () => {
 	const country = "Mexico";
 	const [articles, setArticles] = useState([]);
-	const [countryName, setCountryName] = useState("");
-
-	console.log("ARTICLES: ", articles);
+	const [selectedCountry, setSelectedCountry] = useState("");
 
 	const updateCountryName = (countryInput) => {
-		console.log(countryInput);
-		setCountryName(countryInput);
+		setSelectedCountry(countryInput);
 	};
 
 	const ARTICLES_URI = "https://gcn-api-dev.herokuapp.com:443/articles";
@@ -33,6 +30,15 @@ const App = () => {
 		setArticles(data);
 	};
 
+	// Find country by clicking on map
+	const clickCountry = (geo) => {
+		const foundCountry = countryList.filter(
+			(x) => x.ISO === geo.id.toString()
+		)[0].country;
+		setSelectedCountry(setSelectedCountry);
+		console.log(foundCountry);
+	};
+
 	useEffect(() => {
 		getNewsData();
 	}, []);
@@ -42,7 +48,7 @@ const App = () => {
 			<Navbar countries={countryList} updateCountryName={updateCountryName} />
 
 			<div className="app-container">
-				<Map />
+				<Map clickCountry={clickCountry} />
 
 				<div className="news-container">
 					{articles.length > 0 ? (

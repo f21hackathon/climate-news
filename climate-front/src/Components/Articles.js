@@ -5,7 +5,6 @@ import "./styles/Articles.css";
 
 const Articles = ({ articles }) => {
 	const slicedArticles = articles.slice(0, 10);
-	console.log(slicedArticles);
 	return (
 		<div className="articles-container">
 			<h1 className="news-title">Climate News</h1>

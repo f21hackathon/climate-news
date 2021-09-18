@@ -2,6 +2,8 @@ import * as React from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete, { createFilterOptions } from "@mui/material/Autocomplete";
 
+import "./styles/SearchBar.css";
+
 const filter = createFilterOptions();
 
 const FreeSoloCreateOption = ({ countries }) => {
@@ -61,7 +63,12 @@ const FreeSoloCreateOption = ({ countries }) => {
 			sx={{ width: 300 }}
 			freeSolo
 			renderInput={(params) => (
-				<TextField {...params} label="Free solo with text demo" />
+				<TextField
+					className="search-input"
+					{...params}
+					label="Search for a country"
+					variant="standard"
+				/>
 			)}
 		/>
 	);

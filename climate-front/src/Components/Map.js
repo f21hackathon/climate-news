@@ -16,10 +16,7 @@ const mapStyles = {
 	height: "auto",
 };
 
-const Map = () => {
-	const getCoords = (geo) => {
-		console.log(geo);
-	};
+const Map = ({ clickCountry }) => {
 	return (
 		<div className="map-container">
 			<ComposableMap
@@ -44,7 +41,7 @@ const Map = () => {
 							geos.map((geo, i) => (
 								<Geography
 									className="geography"
-									onClick={() => getCoords(geo)}
+									onClick={() => clickCountry(geo)}
 									key={geo.id + i}
 									geography={geo}
 									projection={proj}
