@@ -59,7 +59,7 @@ const App = () => {
 
 				{selectedCountry ? <CountryModal country={selectedCountry} /> : null}
 
-				<Map clickCountry={clickCountry} />
+				<Map clickCountry={clickCountry} selectedCountry={selectedCountry} />
 				{selectedCountry ? (
 					<div className="news-container">
 						{articles.length > 0 ? (
