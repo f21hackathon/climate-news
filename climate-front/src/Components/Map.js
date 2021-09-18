@@ -9,7 +9,7 @@ import {
 	ZoomableGroup,
 } from "react-simple-maps";
 
-import "./Map.css";
+import "./styles/Map.css";
 
 const mapStyles = {
 	width: "60%",

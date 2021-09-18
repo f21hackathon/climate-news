@@ -3,9 +3,11 @@ import axios from "axios";
 
 import Articles from "./Components/Articles";
 import Map from "./Components/Map";
-import PrimarySearchAppBar from "./Components/AppBar";
+import Navbar from "./Components/Navbar";
 import Loading from "./Components/Loading";
-import LoadingCard from "./Components/LoadingCard";
+import LoadingCards from "./Components/LoadingCards";
+
+import { countryList } from "./countryList";
 
 import "./App.css";
 
@@ -37,7 +39,7 @@ const App = () => {
 
 	return (
 		<div className="App">
-			<PrimarySearchAppBar updateCountryName={updateCountryName} />
+			<Navbar countries={countryList} updateCountryName={updateCountryName} />
 
 			<div className="app-container">
 				<Map />
@@ -46,7 +48,7 @@ const App = () => {
 					{articles.length > 0 ? (
 						<Articles articles={articles} />
 					) : (
-						<LoadingCard />
+						<LoadingCards />
 					)}
 					{/* <Articles articles={articles} /> */}
 				</div>
