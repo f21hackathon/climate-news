@@ -13,3 +13,16 @@
 	width: 250px;
 	border-radius: 10px;
 }
+
+
+.linkable {
+  text-decoration: none;
+  color: black;
+}
+
+
+
+.linkable:hover {
+  font-weight: 600;
+  color: cornflowerblue;
+}

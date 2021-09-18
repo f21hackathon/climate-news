@@ -11,14 +11,16 @@ const Articles = ({ articles }) => {
 							{x.title} - {x.author}
 						</h4>
 						<hr />
-							<img className="image" src={x.urlToImage} alt={x.urlToImage}></img>
-						<p>Link: <a href={x.url} target="_blank">{x.url}</a></p>
-						<p>{x.description}</p>
+						<a href={x.url}><img className="image" src={x.urlToImage} alt={x.urlToImage}></img></a>
+						<p><a class="linkable" href={x.url}>{x.description}</a></p>
 					</div>
 				);
 			})}
 		</div>
 	);
 };
+
+
+
 
 export default Articles;
