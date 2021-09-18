@@ -13,6 +13,7 @@ app.use(express.urlencoded());
 app.use(cors());
 
 app.use("/articles", require("./routes/articles.js"));
+app.use("/climate-data", require("./routes/climate-data"));
 
 // Error middleware
 app.use((err, req, res, next) => {
