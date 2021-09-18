@@ -1,5 +1,6 @@
 import json
 import pandas as pd
+import numpy as np
 
 
 def main():
@@ -19,7 +20,10 @@ def main():
         if data_out[country].get(code) is None:
             data_out[country][code] = {}
         for col in cols:
-            data_out[country][code][col] = row[col]
+            value = row[col]
+            if isinstance(value, float) and np.isnan(value):
+                value = "null"
+            data_out[country][code][col] = value
 
     with open("../data/climate-data.json", "w") as out:
         json.dump(data_out, out, indent=4)
