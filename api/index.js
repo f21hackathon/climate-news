@@ -26,10 +26,11 @@ app.listen(process.env.PORT || PORT, () => {
 	console.log(`Server is listening on port: ${PORT}`);
 });
 
+/*
 const country = "Mexico";
 
 async function getNewsArticles(country) {
-	const NEWS_API_KEY = "3a09f01bf6174499b438bfaa14eea1f5";
+	const NEWS_API_KEY = "5612223de971402996a0a1f3130c00d2"
 	const URL = `https://newsapi.org/v2/everything?q=climate ` +
 		`OR energy OR environment OR global warming OR climate AND ${country} ` + 
 		`change&pageSize=100&from=2021&sortBy=relevancy&apiKey=${NEWS_API_KEY}`;
@@ -51,3 +52,4 @@ getNewsArticles(country)
 	.catch(err => {
 		console.log("Something went wrong...\n", err);
 	});
+	*/

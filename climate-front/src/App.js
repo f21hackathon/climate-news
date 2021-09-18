@@ -1,18 +1,24 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+
 import Articles from "./Components/Articles";
-import "./App.css";
 import Map from "./Components/Map";
-import PrimarySearchAppBar from "./Components/AppBar";
+import Navbar from "./Components/Navbar";
+import Loading from "./Components/Loading";
+import LoadingCards from "./Components/LoadingCards";
+
+import { countryList } from "./countryList";
+
+import "./App.css";
+import CountryModal from "./Components/CountryModal";
 
 const App = () => {
 	const country = "Mexico";
 	const [articles, setArticles] = useState([]);
-	const [countryName, setCountryName] = useState("");
+	const [selectedCountry, setSelectedCountry] = useState("");
 
 	const updateCountryName = (countryInput) => {
-		console.log(countryInput);
-		setCountryName(countryInput);
+		setSelectedCountry("SELECTED: ", countryInput);
 	};
 
 	const ARTICLES_URI = "https://gcn-api-dev.herokuapp.com:443/articles";
@@ -20,7 +26,17 @@ const App = () => {
 	const getNewsData = async () => {
 		const res = await axios.get(ARTICLES_URI);
 		const data = res.data;
+		const updatedArticles = [...articles, data];
 		setArticles(data);
+	};
+
+	// Find country by clicking on map
+	const clickCountry = (geo) => {
+		const foundCountry = countryList.filter(
+			(x) => x.three_digit_ISO_country_code === geo.id.toString()
+		)[0];
+		setSelectedCountry(foundCountry);
+		console.log(foundCountry);
 	};
 
 	useEffect(() => {
@@ -29,13 +45,20 @@ const App = () => {
 
 	return (
 		<div className="App">
-			<PrimarySearchAppBar updateCountryName={updateCountryName} />
+			<Navbar countries={countryList} updateCountryName={updateCountryName} />
 
 			<div className="app-container">
-				<Map />
+
+				{selectedCountry ? <CountryModal country={selectedCountry} /> : null}
+
+				<Map clickCountry={clickCountry} />
 
 				<div className="news-container">
-					<Articles articles={articles} />
+					{articles.length > 0 ? (
+						<Articles articles={articles} />
+					) : (
+						<LoadingCards />
+					)}
 				</div>
 			</div>
 		</div>
