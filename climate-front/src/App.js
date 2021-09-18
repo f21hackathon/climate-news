@@ -34,7 +34,7 @@ const App = () => {
 	};
 
 	// Find country by clicking on map
-	const clickCountry = (geo) => {
+	const clickCountry = (geo, e) => {
 		const foundCountry = countryList.filter(
 			(x) => x.three_digit_ISO_country_code === geo.id.toString()
 		)[0];

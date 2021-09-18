@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
 	ComposableMap,
 	ZoomableGlobe,
@@ -8,6 +8,8 @@ import {
 	Marker,
 	ZoomableGroup,
 } from "react-simple-maps";
+import { geoPath } from "d3-geo";
+import { geoTimes } from "d3-geo-projection";
 
 import "./styles/Map.css";
 
@@ -19,6 +21,23 @@ const mapStyles = {
 var countryDetails = require("../country_details.js");
 
 const Map = ({ clickCountry, selectedCountry }) => {
+	// const [zoom, setZoom] = useState(1);
+	// const [center, setCenter] = useState([0, 0]);
+
+	// const projection = () => {
+	// 	return geoTimes()
+	// 		.translate([800 / 2, 450 / 2])
+	// 		.scale(160);
+	// };
+
+	// const handleGeographyClick = (geo, e) => {
+	// 	clickCountry(geo, e);
+	// 	const path = geoPath().projection(projection());
+	// 	const centroid = projection().invert(path.centroid(geo));
+	// 	setCenter(centroid);
+	// 	setZoom(4);
+	// };
+
 	return (
 		<div className="map-container">
 			<ComposableMap
@@ -43,7 +62,7 @@ const Map = ({ clickCountry, selectedCountry }) => {
 							geos.map((geo, i) => (
 								<Geography
 									className="geography"
-									onClick={() => clickCountry(geo)}
+									onClick={(e) => clickCountry(geo, e)}
 									key={geo.id + i}
 									geography={geo}
 									projection={proj}
