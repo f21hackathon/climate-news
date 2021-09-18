@@ -1,5 +1,6 @@
 import React from "react";
 import "./styles/CountryModal.css";
+import CountryStatsList from "./CountryStatsList";
 
 const CountryModal = ({ country }) => {
 	console.log("MODAL: ", country);
@@ -10,6 +11,11 @@ const CountryModal = ({ country }) => {
 				<img className="flag-img" src={country.image} alt={country.image} />
 				<h3>{country.country}</h3>
 			</div>
+
+			<div className="country-stats">
+				<CountryStatsList />
+			</div>
+
 		</div>
 	);
 };
