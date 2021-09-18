@@ -18,17 +18,17 @@ db.once("open", () => {
 // Define Schema
 const articleSchema = mongoose.Schema({
 	country: { type: String, required: true },
-	author: { type: String, default: '' },
-	content: { type: String, default: '' },
-	description: { type: String, default: '' },
-	publishedAt: { type: String, default: '' },
+	author: { type: String, default: "" },
+	content: { type: String, default: "" },
+	description: { type: String, default: "" },
+	publishedAt: { type: String, default: "" },
 	source: {
-		id: { type: String, default: '' },
-		name: { type: String, default: '' },
+		id: { type: String, default: "" },
+		name: { type: String, default: "" },
 	},
-	title: { type: String, default: '' },
-	url: { type: String, default: '' },
-	urlToImage: { type: String, default: '' },
+	title: { type: String, default: "" },
+	url: { type: String, default: "" },
+	urlToImage: { type: String, default: "" },
 });
 
 const Article = mongoose.model("Article", articleSchema);
@@ -51,7 +51,7 @@ const addArticle = async (country, articleObj) => {
 	return article.save();
 };
 
-const findArticles = async (country="USA") => {
+const findArticles = async (country = "USA") => {
 	await insertNewsArticles(country);
 	await sleep(2000);
 	return await loadNewsArticles(country);
@@ -64,27 +64,28 @@ function sleep(ms) {
 }
 
 async function loadNewsArticles(country) {
-	const query = Article.find({ "country": country });
+	const query = Article.find({ country: country }).limit(20);
 	const result = await query.exec();
+	console.log(result);
 	return result;
 }
 
 async function insertNewsArticles(country) {
 	getNewsArticles(country)
-		.then(res => {
-			for (var i=0; i < res.data.articles.length; i++)
-			{
+		.then((res) => {
+			for (var i = 0; i < res.data.articles.length; i++) {
 				addArticle(country, res.data.articles[i]);
 			}
 		})
-		.catch(err => {
+		.catch((err) => {
 			console.log("Something went wrong...\n", err);
-	});
+		});
 }
 
 async function getNewsArticles(country) {
 	const NEWS_API_KEY = "3a09f01bf6174499b438bfaa14eea1f5";
-	const URL = `https://newsapi.org/v2/everything?` +
+	const URL =
+		`https://newsapi.org/v2/everything?` +
 		`q=+${country} energy environment "global warming"` +
 		`change&pageSize=100&from=2021&sortBy=publishedAt&apiKey=${NEWS_API_KEY}`;
 
