@@ -27,11 +27,12 @@
 
 .news-container {
 	width: 30%;
+	height: 100%;
 	margin-right: 2%;
 	max-height: 85vh;
 	overflow: scroll;
-	background-color: red;
 	border-radius: 10px;
+	background-color: rgb(253, 249, 249);
 }
 
 .country-card {

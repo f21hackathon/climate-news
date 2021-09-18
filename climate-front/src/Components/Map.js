@@ -9,7 +9,7 @@ import {
 	ZoomableGroup,
 } from "react-simple-maps";
 
-import "./Map.css";
+import "./styles/Map.css";
 
 const mapStyles = {
 	width: "60%",
@@ -17,11 +17,12 @@ const mapStyles = {
 };
 
 
+
 var countryDetails = require('../country_details.json');
 
 
 
-const Map = () => {
+const Map = ({ clickCountry }) => {
 	const getCoords = (geo) => {
 		console.log(geo);
 	};
@@ -32,10 +33,9 @@ const Map = () => {
 		let threeDigitISOcode = geo['id']
 		let clickedCountry = countryDetails.find(c => c.three_digit_ISO_country_code === threeDigitISOcode)
 		console.log(clickedCountry)
-
-
-
 	}
+
+const Map = ({ clickCountry }) => {
 	return (
 		<div className="map-container">
 			<ComposableMap
@@ -60,8 +60,9 @@ const Map = () => {
 							geos.map((geo, i) => (
 								<Geography
 									className="geography"
-									onClick={() => getCoords(geo)}
+
 									onClick={() => passCountryIDtoCountryCard(geo)}
+									onClick={() => clickCountry(geo)}
 									key={geo.id + i}
 									geography={geo}
 									projection={proj}
