@@ -87,6 +87,7 @@ export const country_details = [
 		country: "\u00c3\u0192\u00e2\u20ac\u00a6land Islands",
 		image: "https://flagcdn.com/96x72/ax.png",
 		ISOcode: "ax",
+		three_digit_ISO_country_code: "234",
 	},
 	{
 		country: "Azerbaijan",
@@ -152,6 +153,7 @@ export const country_details = [
 		country: "Saint Barth\u00c3\u0192\u00c2\u00a9lemy",
 		image: "https://flagcdn.com/96x72/bl.png",
 		ISOcode: "bl",
+		three_digit_ISO_country_code: "652",
 	},
 	{
 		country: "Bermuda",
@@ -163,16 +165,19 @@ export const country_details = [
 		country: "Brunei",
 		image: "https://flagcdn.com/96x72/bn.png",
 		ISOcode: "bn",
+		three_digit_ISO_country_code: "096",
 	},
 	{
 		country: "Bolivia",
 		image: "https://flagcdn.com/96x72/bo.png",
 		ISOcode: "bo",
+		three_digit_ISO_country_code: "068",
 	},
 	{
 		country: "Caribbean Netherlands",
 		image: "https://flagcdn.com/96x72/bq.png",
 		ISOcode: "bq",
+		three_digit_ISO_country_code: "535",
 	},
 	{
 		country: "Brazil",
@@ -232,6 +237,7 @@ export const country_details = [
 		country: "DR Congo",
 		image: "https://flagcdn.com/96x72/cd.png",
 		ISOcode: "cd",
+		three_digit_ISO_country_code: "178",
 	},
 	{
 		country: "Central African Republic",
@@ -243,6 +249,7 @@ export const country_details = [
 		country: "Republic of the Congo",
 		image: "https://flagcdn.com/96x72/cg.png",
 		ISOcode: "cg",
+		three_digit_ISO_country_code: "180",
 	},
 	{
 		country: "Switzerland",
@@ -254,6 +261,7 @@ export const country_details = [
 		country: "C\u00c3\u0192te dIvoire (Ivory Coast)",
 		image: "https://flagcdn.com/96x72/ci.png",
 		ISOcode: "ci",
+		three_digit_ISO_country_code: "384",
 	},
 	{
 		country: "Cook Islands",
@@ -301,11 +309,13 @@ export const country_details = [
 		country: "Cape Verde",
 		image: "https://flagcdn.com/96x72/cv.png",
 		ISOcode: "cv",
+		three_digit_ISO_country_code: "132",
 	},
 	{
 		country: "Cura\u00c3\u0192\u00c2\u00a7ao",
 		image: "https://flagcdn.com/96x72/cw.png",
 		ISOcode: "cw",
+		three_digit_ISO_country_code: "531",
 	},
 	{
 		country: "Christmas Island",
@@ -424,11 +434,13 @@ export const country_details = [
 		country: "Falkland Islands",
 		image: "https://flagcdn.com/96x72/fk.png",
 		ISOcode: "fk",
+		three_digit_ISO_country_code: "238",
 	},
 	{
 		country: "Micronesia",
 		image: "https://flagcdn.com/96x72/fm.png",
 		ISOcode: "fm",
+		three_digit_ISO_country_code: "583",
 	},
 	{
 		country: "Faroe Islands",
@@ -452,26 +464,31 @@ export const country_details = [
 		country: "United Kingdom",
 		image: "https://flagcdn.com/96x72/gb.png",
 		ISOcode: "gb",
+		three_digit_ISO_country_code: "826",
 	},
 	{
 		country: "England",
 		image: "https://flagcdn.com/96x72/gb-eng.png",
 		ISOcode: "gb-eng",
+		three_digit_ISO_country_code: "826",
 	},
 	{
 		country: "Northern Ireland",
 		image: "https://flagcdn.com/96x72/gb-nir.png",
 		ISOcode: "gb-nir",
+		three_digit_ISO_country_code: "826",
 	},
 	{
 		country: "Scotland",
 		image: "https://flagcdn.com/96x72/gb-sct.png",
 		ISOcode: "gb-sct",
+		three_digit_ISO_country_code: "826",
 	},
 	{
 		country: "Wales",
 		image: "https://flagcdn.com/96x72/gb-wls.png",
 		ISOcode: "gb-wls",
+		three_digit_ISO_country_code: "826",
 	},
 	{
 		country: "Grenada",
@@ -549,6 +566,7 @@ export const country_details = [
 		country: "South Georgia",
 		image: "https://flagcdn.com/96x72/gs.png",
 		ISOcode: "gs",
+		three_digit_ISO_country_code: "239",
 	},
 	{
 		country: "Guatemala",
@@ -656,6 +674,7 @@ export const country_details = [
 		country: "Iran",
 		image: "https://flagcdn.com/96x72/ir.png",
 		ISOcode: "ir",
+		three_digit_ISO_country_code: "364",
 	},
 	{
 		country: "Iceland",
@@ -733,11 +752,13 @@ export const country_details = [
 		country: "North Korea",
 		image: "https://flagcdn.com/96x72/kp.png",
 		ISOcode: "kp",
+		three_digit_ISO_country_code: "408",
 	},
 	{
 		country: "South Korea",
 		image: "https://flagcdn.com/96x72/kr.png",
 		ISOcode: "kr",
+		three_digit_ISO_country_code: "410",
 	},
 	{
 		country: "Kuwait",
@@ -761,6 +782,7 @@ export const country_details = [
 		country: "Laos",
 		image: "https://flagcdn.com/96x72/la.png",
 		ISOcode: "la",
+		three_digit_ISO_country_code: "418",
 	},
 	{
 		country: "Lebanon",
@@ -838,6 +860,7 @@ export const country_details = [
 		country: "Moldova",
 		image: "https://flagcdn.com/96x72/md.png",
 		ISOcode: "md",
+		three_digit_ISO_country_code: "498",
 	},
 	{
 		country: "Montenegro",
@@ -849,6 +872,7 @@ export const country_details = [
 		country: "Saint Martin",
 		image: "https://flagcdn.com/96x72/mf.png",
 		ISOcode: "mf",
+		three_digit_ISO_country_code: "663",
 	},
 	{
 		country: "Madagascar",
@@ -890,6 +914,7 @@ export const country_details = [
 		country: "Macau",
 		image: "https://flagcdn.com/96x72/mo.png",
 		ISOcode: "mo",
+		three_digit_ISO_country_code: "446",
 	},
 	{
 		country: "Northern Mariana Islands",
@@ -1087,6 +1112,7 @@ export const country_details = [
 		country: "Pitcairn Islands",
 		image: "https://flagcdn.com/96x72/pn.png",
 		ISOcode: "pn",
+		three_digit_ISO_country_code: "612",
 	},
 	{
 		country: "Puerto Rico",
@@ -1098,6 +1124,7 @@ export const country_details = [
 		country: "Palestine",
 		image: "https://flagcdn.com/96x72/ps.png",
 		ISOcode: "ps",
+		three_digit_ISO_country_code: "275",
 	},
 	{
 		country: "Portugal",
@@ -1127,6 +1154,7 @@ export const country_details = [
 		country: "R\u00c3\u0192\u00c2\u00a9union",
 		image: "https://flagcdn.com/96x72/re.png",
 		ISOcode: "re",
+		three_digit_ISO_country_code: "638",
 	},
 	{
 		country: "Romania",
@@ -1144,6 +1172,7 @@ export const country_details = [
 		country: "Russia",
 		image: "https://flagcdn.com/96x72/ru.png",
 		ISOcode: "ru",
+		three_digit_ISO_country_code: "643",
 	},
 	{
 		country: "Rwanda",
@@ -1252,6 +1281,7 @@ export const country_details = [
 			"S\u00c3\u0192\u00c2\u00a3o Tom\u00c3\u0192\u00c2\u00a9 and Pr\u00c3\u0192\\xadncipe",
 		image: "https://flagcdn.com/96x72/st.png",
 		ISOcode: "st",
+		three_digit_ISO_country_code: "678",
 	},
 	{
 		country: "El Salvador",
@@ -1263,16 +1293,19 @@ export const country_details = [
 		country: "Sint Maarten",
 		image: "https://flagcdn.com/96x72/sx.png",
 		ISOcode: "sx",
+		three_digit_ISO_country_code: "534"
 	},
 	{
 		country: "Syria",
 		image: "https://flagcdn.com/96x72/sy.png",
 		ISOcode: "sy",
+		three_digit_ISO_country_code: "760"
 	},
 	{
 		country: "Eswatini (Swaziland)",
 		image: "https://flagcdn.com/96x72/sz.png",
 		ISOcode: "sz",
+		three_digit_ISO_country_code: "748"
 	},
 	{
 		country: "Turks and Caicos Islands",
@@ -1290,6 +1323,7 @@ export const country_details = [
 		country: "French Southern and Antarctic Lands",
 		image: "https://flagcdn.com/96x72/tf.png",
 		ISOcode: "tf",
+		three_digit_ISO_country_code: "260",
 	},
 	{
 		country: "Togo",
@@ -1361,11 +1395,13 @@ export const country_details = [
 		country: "Taiwan",
 		image: "https://flagcdn.com/96x72/tw.png",
 		ISOcode: "tw",
+		three_digit_ISO_country_code: "158",
 	},
 	{
 		country: "Tanzania",
 		image: "https://flagcdn.com/96x72/tz.png",
 		ISOcode: "tz",
+		three_digit_ISO_country_code: "834",
 	},
 	{
 		country: "Ukraine",
@@ -1394,6 +1430,7 @@ export const country_details = [
 		country: "United States",
 		image: "https://flagcdn.com/96x72/us.png",
 		ISOcode: "us",
+		three_digit_ISO_country_code: "840",
 	},
 	{
 		country: "Uruguay",
@@ -1422,21 +1459,25 @@ export const country_details = [
 		country: "Venezuela",
 		image: "https://flagcdn.com/96x72/ve.png",
 		ISOcode: "ve",
+		three_digit_ISO_country_code: "862",
 	},
 	{
 		country: "British Virgin Islands",
 		image: "https://flagcdn.com/96x72/vg.png",
 		ISOcode: "vg",
+		three_digit_ISO_country_code: "092",
 	},
 	{
 		country: "United States Virgin Islands",
 		image: "https://flagcdn.com/96x72/vi.png",
 		ISOcode: "vi",
+		three_digit_ISO_country_code: "850",
 	},
 	{
 		country: "Vietnam",
 		image: "https://flagcdn.com/96x72/vn.png",
 		ISOcode: "vn",
+		three_digit_ISO_country_code: "704",
 	},
 	{
 		country: "Vanuatu",
