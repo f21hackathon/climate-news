@@ -21,7 +21,7 @@ const CountryStatsList = ({ countryData }) => {
     return (
         <Box sx={{ flexGrow: 0, maxWidth: 752 }}>
             <Typography sx={{ mb: 2 }} variant="h6" component="div">
-                <u>Country Environmental Stats</u>
+                <b>Country Environmental Stats</b>
             </Typography>
             <List dense={dense}>
                 <ListItem>
