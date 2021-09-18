@@ -33,7 +33,7 @@ const App = () => {
 
 			<div className="app-container">
 				<Map />
-				<div></div>
+
 				<div className="news-container">
 					<Articles articles={articles} />
 				</div>
