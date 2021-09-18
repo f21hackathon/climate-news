@@ -20,6 +20,11 @@
 	pointer-events: none;
 }
 
+.news-title {
+	color: black;
+	text-align: center;
+}
+
 .news-container {
 	width: 30%;
 	height: 100%;
