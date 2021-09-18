@@ -1,21 +1,16 @@
-import React, { Component } from "react";
+import React from "react";
+import Article from "./Article";
+
 import "./Articles.css";
 
 const Articles = ({ articles }) => {
+	const slicedArticles = articles.slice(0, 10);
+	console.log(slicedArticles);
 	return (
 		<div className="articles-container">
-			{articles.map((x, idx) => {
-				return (
-					<div key={idx} className="article">
-						<h4>
-							{x.title} - {x.author}
-						</h4>
-						<hr />
-						<img className="image" src={x.urlToImage} alt={x.urlToImage}></img>
-						<p>Link: <a href={x.url}>{x.url}</a></p>
-						<p>{x.description}</p>
-					</div>
-				);
+			<h1 className="news-title">Climate News</h1>
+			{slicedArticles.map((x, idx) => {
+				return <Article article={x} />;
 			})}
 		</div>
 	);
