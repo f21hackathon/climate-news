@@ -32,7 +32,7 @@ const CountryStatsList = ({ countryData }) => {
                     </ListItemAvatar>
                     <ListItemText
                         primary="Population"
-                        // secondary={ countryData.population }
+                        secondary={ countryData["data"][0]["population"] }
                     />
                 </ListItem>
                 <ListItem>
@@ -43,7 +43,7 @@ const CountryStatsList = ({ countryData }) => {
                     </ListItemAvatar>
                     <ListItemText
                         primary="CO2 per Capita"
-                        // secondary={ countryData.co2PerCapita }
+                        secondary={ countryData["data"][0]["co2_per_capita"] }
                     />
                 </ListItem>
                 <ListItem>
@@ -54,7 +54,7 @@ const CountryStatsList = ({ countryData }) => {
                     </ListItemAvatar>
                     <ListItemText
                         primary="Cumulative CO2"
-                        // secondary={ countryData.co2Cumulative }
+                        secondary={ countryData["data"][0]["cumulative_co2"] }
                     />
                 </ListItem>
                 <ListItem>
@@ -65,7 +65,7 @@ const CountryStatsList = ({ countryData }) => {
                     </ListItemAvatar>
                     <ListItemText
                         primary="Global Share of CO2"
-                        // secondary={ countryData.co2Global }
+                        secondary={ countryData["data"][0]["share_global_co2"] }
                     />
                 </ListItem>
             </List>
