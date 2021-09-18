@@ -84,9 +84,9 @@ async function insertNewsArticles(country) {
 
 async function getNewsArticles(country) {
 	const NEWS_API_KEY = "3a09f01bf6174499b438bfaa14eea1f5";
-	const URL = `https://newsapi.org/v2/everything?q=climate ` +
-		`OR energy OR environment OR global warming OR climate AND ${country} ` + 
-		`change&pageSize=100&from=2021&sortBy=relevancy&apiKey=${NEWS_API_KEY}`;
+	const URL = `https://newsapi.org/v2/everything?` +
+		`q=+"${country}" energy environment "global warming"` +
+		`change&pageSize=20&from=2021-01-01&language=en&sortBy=publishedAt&apiKey=${NEWS_API_KEY}`;
 
 	try {
 		return await axios.get(URL);
