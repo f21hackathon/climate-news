@@ -52,14 +52,15 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-const SearchAppBar = () => {
+const SearchAppBar = (props) => {
   // Handles updating state when something is typed in the search bar
   const [country, setCountry] = useState("")
 
   // Handles on enter
   const keyPress = (e) => {
     if (e.keyCode === 13) {
-      console.log(e.target.value)
+      console.log(e.target.value);
+      setCountry(e.target.value)
     }
   };
 
