@@ -16,6 +16,25 @@ const mapStyles = {
 	height: "auto",
 };
 
+
+
+var countryDetails = require('../country_details.json');
+
+
+
+const Map = ({ clickCountry }) => {
+	const getCoords = (geo) => {
+		console.log(geo);
+	};
+
+
+	const passCountryIDtoCountryCard = (geo) => {
+		// handshake country ID to country details to obtain country name
+		let threeDigitISOcode = geo['id']
+		let clickedCountry = countryDetails.find(c => c.three_digit_ISO_country_code === threeDigitISOcode)
+		console.log(clickedCountry)
+	}
+
 const Map = ({ clickCountry }) => {
 	return (
 		<div className="map-container">
@@ -41,6 +60,8 @@ const Map = ({ clickCountry }) => {
 							geos.map((geo, i) => (
 								<Geography
 									className="geography"
+
+									onClick={() => passCountryIDtoCountryCard(geo)}
 									onClick={() => clickCountry(geo)}
 									key={geo.id + i}
 									geography={geo}

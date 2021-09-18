@@ -34,3 +34,11 @@
 	border-radius: 10px;
 	background-color: rgb(253, 249, 249);
 }
+
+.country-card {
+	width: 30%;
+	margin-left: 2%;
+	max-height: 85vh;
+	background-color: red;
+	border-radius: 10px;
+}

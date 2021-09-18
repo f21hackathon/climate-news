@@ -48,6 +48,7 @@ const App = () => {
 			<Navbar countries={countryList} updateCountryName={updateCountryName} />
 
 			<div className="app-container">
+
 				{selectedCountry ? <CountryModal country={selectedCountry} /> : null}
 
 				<Map clickCountry={clickCountry} />
