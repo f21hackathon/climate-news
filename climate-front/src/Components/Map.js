@@ -16,10 +16,26 @@ const mapStyles = {
 	height: "auto",
 };
 
+
+var countryDetails = require('../country_details.json');
+
+
+
 const Map = () => {
 	const getCoords = (geo) => {
 		console.log(geo);
 	};
+
+
+	const passCountryIDtoCountryCard = (geo) => {
+		// handshake country ID to country details to obtain country name
+		let threeDigitISOcode = geo['id']
+		let clickedCountry = countryDetails.find(c => c.three_digit_ISO_country_code === threeDigitISOcode)
+		console.log(clickedCountry)
+
+
+
+	}
 	return (
 		<div className="map-container">
 			<ComposableMap
@@ -45,6 +61,7 @@ const Map = () => {
 								<Geography
 									className="geography"
 									onClick={() => getCoords(geo)}
+									onClick={() => passCountryIDtoCountryCard(geo)}
 									key={geo.id + i}
 									geography={geo}
 									projection={proj}
