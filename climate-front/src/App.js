@@ -33,7 +33,7 @@ const App = () => {
 	// Find country by clicking on map
 	const clickCountry = (geo) => {
 		const foundCountry = countryList.filter(
-			(x) => x.ISO === geo.id.toString()
+			(x) => x.three_digit_ISO_country_code === geo.id.toString()
 		)[0];
 		setSelectedCountry(foundCountry);
 		console.log(foundCountry);
