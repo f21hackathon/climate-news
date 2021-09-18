@@ -40,7 +40,7 @@ const App = () => {
 				<Map />
 
 				<div className="news-container">
-					
+					<Articles articles={articles} />
 				</div>
 			</div>
 		</div>
