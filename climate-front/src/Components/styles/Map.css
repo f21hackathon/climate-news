@@ -4,6 +4,7 @@
 	align-items: center;
 	width: 70%;
 	max-height: 100vh;
+	z-index: 0;
 }
 
 .circle {
