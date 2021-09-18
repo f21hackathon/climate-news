@@ -11,8 +11,8 @@ const Articles = ({ articles }) => {
 							{x.title} - {x.author}
 						</h4>
 						<hr />
-						<img className="image" src={x.urlToImage} alt={x.urlToImage}></img>
-						<p>Link: {x.url}</p>
+							<img className="image" src={x.urlToImage} alt={x.urlToImage}></img>
+						<p>Link: <a href={x.url} target="_blank">{x.url}</a></p>
 						<p>{x.description}</p>
 					</div>
 				);
