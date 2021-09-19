@@ -11,6 +11,18 @@ import {CopyToClipboard} from 'react-copy-to-clipboard';
 
 export default function ImgMediaCard({ article }) {
 
+	var raw_article_title = article.title;
+	const ARTICLE_TITLE_LENGTH = 100;
+	var trimmed_article_title = raw_article_title.length > ARTICLE_TITLE_LENGTH ? 
+	                    raw_article_title.substring(0, ARTICLE_TITLE_LENGTH - 1) + "…" : 
+	                    raw_article_title;
+		
+	var raw_author =  article.author ? article.author : 'Author Unknown';
+	const ARTICLE_AUTHOR_LENGTH = 30;
+	var trimmed_author = raw_author.length > ARTICLE_AUTHOR_LENGTH ? 
+	                    raw_author.substring(0, ARTICLE_AUTHOR_LENGTH - 1) + "…" : 
+	                    raw_author;
+
 	return (
 		<Card className="article">
 			<a className="article-link" href={article.url} target="_blank">
@@ -29,7 +41,7 @@ export default function ImgMediaCard({ article }) {
 					component="div"
 					className="article-title">
 					<a className="article-link" href={article.url} target="_blank">
-						{article.title} - {article.author}</a> 
+						{trimmed_article_title} - {trimmed_author}</a> 
 							<CopyToClipboard text={article.url} onCopy={article.url}>
 								<div class="tooltip"><LinkIcon sx={{ ':hover': {boxShadow: 6, color:'success.main'}}}></LinkIcon>
 									<span class="tooltiptext">Copy link</span>
