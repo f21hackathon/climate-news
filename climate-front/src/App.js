@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-
 import Articles from "./Components/Articles";
 import Map from "./Components/Map";
 import Navbar from "./Components/Navbar";
@@ -8,7 +7,6 @@ import Loading from "./Components/Loading";
 import LoadingCards from "./Components/LoadingCards";
 import NoArticle from "./Components/NoArticle";
 import { countryList } from "./countryList";
-import {CopyToClipboard} from 'react-copy-to-clipboard';
 import { Container } from "@material-ui/core"; 
 import { makeStyles } from "@material-ui/styles";
 
