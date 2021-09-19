@@ -15,7 +15,7 @@ const FreeSoloCreateOption = ({
 	const [value, setValue] = useState(selectedCountry);
 
 	useEffect(() => {
-		// console.log("INPUT VALUE: ", value.country);
+		console.log("INPUT VALUE: ", value);
 		setSelectedCountry(value);
 		searchCountry(value.country);
 	}, [value]);
@@ -48,7 +48,7 @@ const FreeSoloCreateOption = ({
 				if (inputValue !== "" && !isExisting) {
 					filtered.push({
 						inputValue,
-						country: `Add "${inputValue}"`,
+						country: `No results for "${inputValue}"`,
 					});
 				}
 

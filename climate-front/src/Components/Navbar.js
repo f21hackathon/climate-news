@@ -1,52 +1,32 @@
 import * as React from "react";
-import { useState } from "react";
-import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
+import { makeStyles } from "@material-ui/styles";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import InputBase from "@mui/material/InputBase";
-import SearchIcon from "@mui/icons-material/Search";
 import FreeSoloCreateOption from "./SearchBar";
+import earth from "./styles/earth.png";
 
-const Search = styled("div")(({ theme }) => ({
-	position: "relative",
-	borderRadius: theme.shape.borderRadius,
-	backgroundColor: alpha(theme.palette.common.white, 0.15),
-	"&:hover": {
-		backgroundColor: alpha(theme.palette.common.white, 0.25),
+import "./styles/Navbar.css";
+
+const useStyles = makeStyles((theme) => ({
+	toolbar: {
+		display: "flex",
+		flexDirection: "row",
+		justifyContent: "space-between",
 	},
-	marginLeft: 0,
-	width: "100%",
-	[theme.breakpoints.up("sm")]: {
-		marginLeft: theme.spacing(1),
-		width: "auto",
+	logoLg: {
+		display: "none",
+		[theme.breakpoints.up("md")]: {
+			display: "block",
+			flexGrow: 1,
+		},
 	},
-}));
-
-const SearchIconWrapper = styled("div")(({ theme }) => ({
-	padding: theme.spacing(0, 2),
-	height: "100%",
-	position: "absolute",
-	pointerEvents: "none",
-	display: "flex",
-	alignItems: "center",
-	justifyContent: "center",
-}));
-
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-	color: "inherit",
-	"& .MuiInputBase-input": {
-		padding: theme.spacing(1, 1, 1, 0),
-		// vertical padding + font size from searchIcon
-		paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-		transition: theme.transitions.create("width"),
-		width: "100%",
-		[theme.breakpoints.up("sm")]: {
-			width: "32ch",
-			"&:focus": {
-				width: "40ch",
-			},
+	logoSm: {
+		display: "block",
+		[theme.breakpoints.up("md")]: {
+			display: "none",
+			flexGrow: 1,
 		},
 	},
 }));
@@ -58,28 +38,38 @@ const Navbar = ({
 	setSelectedCountry,
 }) => {
 	// Handles updating state when something is typed in the search bar
+
+	const classes = useStyles();
+
 	return (
 		<Box sx={{ flexGrow: 1 }}>
 			<AppBar position="static" style={{ background: "#219fff" }}>
-				<Toolbar>
+				<Toolbar className={classes.toolbar}>
 					<Typography
 						variant="h6"
 						noWrap
 						component="div"
-						sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}>
-						<u>Climate News</u>
+						className={classes.logoLg}>
+						<img src={earth} alt="Logo" className="logo" />
+						Climate News
+						<em id="tagline">
+							- Click or search for a country to view climate news and
+							statistics.
+						</em>
 					</Typography>
-					<Search>
-						<SearchIconWrapper>
-							<SearchIcon />
-						</SearchIconWrapper>
-						<FreeSoloCreateOption
-							countries={countries}
-							selectedCountry={selectedCountry}
-							searchCountry={searchCountry}
-							setSelectedCountry={setSelectedCountry}
-						/>
-					</Search>
+					<Typography
+						variant="h6"
+						noWrap
+						component="div"
+						className={classes.logoSm}>
+						<img src={earth} alt="Logo" className="logo" />
+					</Typography>
+					<FreeSoloCreateOption
+						countries={countries}
+						selectedCountry={selectedCountry}
+						searchCountry={searchCountry}
+						setSelectedCountry={setSelectedCountry}
+					/>
 				</Toolbar>
 			</AppBar>
 		</Box>

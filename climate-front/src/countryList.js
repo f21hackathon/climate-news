@@ -259,7 +259,7 @@ export const countryList = [
 		three_digit_ISO_country_code: "756",
 	},
 	{
-		country: "C\u00c3\u0192te dIvoire (Ivory Coast)",
+		country: "Ivory Coast",
 		image: "https://flagcdn.com/96x72/ci.png",
 		ISOcode: "ci",
 		three_digit_ISO_country_code: "384",
