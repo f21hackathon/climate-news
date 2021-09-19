@@ -51,21 +51,13 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 	},
 }));
 
-const Navbar = ({ countries }) => {
+const Navbar = ({
+	countries,
+	selectedCountry,
+	searchCountry,
+	setSelectedCountry,
+}) => {
 	// Handles updating state when something is typed in the search bar
-	const [country, setCountry] = useState("");
-
-	// // Handles on enter
-	// const handleSubmit = (e) => {
-	// 	e.preventDefault();
-	// 	console.log("COUNRY: ", country);
-	// };
-
-	// const handleChange = (e) => {
-	// 	e.preventDefault();
-	// 	setCountry(e.target.value);
-	// };
-
 	return (
 		<Box sx={{ flexGrow: 1 }}>
 			<AppBar position="static" style={{ background: "#219fff" }}>
@@ -81,13 +73,12 @@ const Navbar = ({ countries }) => {
 						<SearchIconWrapper>
 							<SearchIcon />
 						</SearchIconWrapper>
-						{/* <StyledInputBase
-							placeholder="Search for a country"
-							inputProps={{ "aria-label": "search" }}
-							onChange={(e) => handleChange(e)}
-							onSubmit={(e) => handleSubmit(e)}
-						/> */}
-						<FreeSoloCreateOption countries={countries} />
+						<FreeSoloCreateOption
+							countries={countries}
+							selectedCountry={selectedCountry}
+							searchCountry={searchCountry}
+							setSelectedCountry={setSelectedCountry}
+						/>
 					</Search>
 				</Toolbar>
 			</AppBar>

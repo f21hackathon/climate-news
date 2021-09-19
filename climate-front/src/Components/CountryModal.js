@@ -2,20 +2,23 @@ import React from "react";
 import "./styles/CountryModal.css";
 import CountryStatsList from "./CountryStatsList";
 
-const CountryModal = ({ country }) => {
-	console.log("MODAL: ", country);
-
+const CountryModal = (props) => {
 	return (
-		<div className="country-modal-container">
+		<div
+			className="country-modal-container"
+			style={{ overflow: "hidden", overflowY: "scroll" }}>
 			<div className="country-name-container">
-				<img className="flag-img" src={country.image} alt={country.image} />
-				<h3>{country.country}</h3>
+				<img
+					className="flag-img"
+					src={props.country.image}
+					alt={props.country.image}
+				/>
+				<h3>{props.country.country}</h3>
 			</div>
 
-			<div className="country-stats">
-				<CountryStatsList />
+			<div className="country-stats" style={{ maxHeight: "100%" }}>
+				<CountryStatsList countryData={props.stats} />
 			</div>
-
 		</div>
 	);
 };

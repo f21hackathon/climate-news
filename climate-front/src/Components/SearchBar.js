@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState, useEffect } from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete, { createFilterOptions } from "@mui/material/Autocomplete";
 
@@ -6,8 +6,20 @@ import "./styles/SearchBar.css";
 
 const filter = createFilterOptions();
 
-const FreeSoloCreateOption = ({ countries }) => {
-	const [value, setValue] = React.useState(null);
+const FreeSoloCreateOption = ({
+	countries,
+	searchCountry,
+	selectedCountry,
+	setSelectedCountry,
+}) => {
+	const [value, setValue] = useState(selectedCountry);
+
+	useEffect(() => {
+		// console.log("INPUT VALUE: ", value.country);
+		setSelectedCountry(value);
+		searchCountry(value.country);
+	}, [value]);
+
 	return (
 		<Autocomplete
 			value={value}

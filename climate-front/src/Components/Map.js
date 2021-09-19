@@ -20,7 +20,7 @@ const mapStyles = {
 
 var countryDetails = require("../country_details.js");
 
-const Map = ({ clickCountry, selectedCountry, handleHover }) => {
+const Map = ({ clickCountry, selectedCountry }) => {
 	// const [zoom, setZoom] = useState(1);
 	// const [center, setCenter] = useState([0, 0]);
 
@@ -61,8 +61,8 @@ const Map = ({ clickCountry, selectedCountry, handleHover }) => {
 						{(geos, proj) =>
 							geos.map((geo, i) => (
 								<Geography
-									onMouseEnter={(e) => handleHover(geo, e)}
-									onMouseLeave={(e) => handleHover("", e)}
+									// onMouseEnter={(e) => handleHover(geo, e)}
+									// onMouseLeave={(e) => handleHover("", e)}
 									className="geography"
 									onClick={(e) => clickCountry(geo, e)}
 									key={geo.id + i}

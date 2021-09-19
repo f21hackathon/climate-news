@@ -16,26 +16,42 @@ import "./App.css";
 
 const App = () => {
 	const [articles, setArticles] = useState([]);
-	const [selectedCountry, setSelectedCountry] = useState("");
+	const [selectedCountry, setSelectedCountry] = useState({
+		ISOcode: "",
+		country: "",
+		image: "",
+		three_digit_ISO_country_code: "",
+	});
 	const [statusCode, setStatusCode] = useState("");
 	const [hover, setHover] = useState("");
 	const [stats, setStats] = useState([]);
+	const [countryStats, setCountryStats] = useState([]);
 
-	const handleHover = (geo, e) => {
-		if (geo.id) {
-			const foundCountry = countryList.filter(
-				(x) => x.three_digit_ISO_country_code === geo.id.toString()
-			)[0];
+	// const handleHover = (geo, e) => {
+	// 	if (geo.id) {
+	// 		const foundCountry = countryList.filter(
+	// 			(x) => x.three_digit_ISO_country_code === geo.id.toString()
+	// 		)[0];
 
-			setHover(foundCountry.country);
-		} else {
-			setHover("");
-		}
-		console.log("HOVER COUNTRY: ", hover);
+	// 		setHover(foundCountry.country);
+	// 	} else {
+	// 		setHover("");
+	// 	}
+	// 	// console.log("HOVER COUNTRY: ", hover);
+	// };
+
+	// Same as clickCountry but for searching instead of clicking map
+	const searchCountry = (countryInput) => {
+		console.log("SELECTED COUNTRY: ", countryInput);
+		getNewsData(countryInput);
+		getCountryStats(countryInput);
 	};
 
-	const updateCountryName = (countryInput) => {
-		setSelectedCountry("SELECTED: ", countryInput);
+	const getCountryStats = async (country) => {
+		const STATS_URI = `https://gcn-api-dev.herokuapp.com:443/climate-data/${country}`;
+		const res = await axios.get(STATS_URI);
+		const data = res.data;
+		setCountryStats(data);
 	};
 
 	const getNewsData = async (country) => {
@@ -53,26 +69,35 @@ const App = () => {
 		const foundCountry = countryList.filter(
 			(x) => x.three_digit_ISO_country_code === geo.id.toString()
 		)[0];
+		console.log("selectedCountry: ", foundCountry);
 		setSelectedCountry(foundCountry);
 		getNewsData(foundCountry.country);
+		getCountryStats(foundCountry.country);
 	};
 
 	return (
 		<div className="App">
-			<Navbar countries={countryList} updateCountryName={updateCountryName} />
+			<Navbar
+				countries={countryList}
+				searchCountry={searchCountry}
+				selectedCountry={selectedCountry}
+				setSelectedCountry={setSelectedCountry}
+			/>
 
 			<div className="app-container">
 				{/* CountryHover not showing for some reason */}
 				{/* <CountryHover hover={hover} /> */}
 
-				{selectedCountry ? <CountryModal country={selectedCountry} /> : null}
+				{selectedCountry.country ? (
+					<CountryModal country={selectedCountry} stats={countryStats} />
+				) : null}
 
 				<Map
-					handleHover={handleHover}
+					// handleHover={handleHover}
 					clickCountry={clickCountry}
 					selectedCountry={selectedCountry}
 				/>
-				{selectedCountry ? (
+				{selectedCountry.country ? (
 					<div className="news-container">
 						{statusCode === "200" ? (
 							articles.length > 0 ? (
