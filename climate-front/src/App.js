@@ -8,8 +8,10 @@ import Loading from "./Components/Loading";
 import LoadingCards from "./Components/LoadingCards";
 import NoArticle from "./Components/NoArticle";
 import { countryList } from "./countryList";
-import ReactDOM from 'react-dom';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
+import { Container } from "@material-ui/core"; 
+import { makeStyles } from "@material-ui/styles";
+
 
 import "./App.css";
 import CountryModal from "./Components/CountryModal";
@@ -70,17 +72,97 @@ const App = () => {
 		getNewsData(foundCountry.country);
 		getCountryStats(foundCountry.country);
 	};
-	
+
+	const useStyles = makeStyles((theme) => ({
+		app: {
+			top: 0,
+			left: 0,
+			position: "absolute",
+			width: "100vw",
+			maxHeight: "none",
+			[theme.breakpoints.up("md")]: {
+				maxHeight: "100vh"
+			}
+		},
+		mainLg: {
+			display: "none",
+			flexDirection: "row",
+			justifyContent: "space-between",
+			alignItems: "center",
+			height: "93vh",
+			[theme.breakpoints.up("md")]: {
+				display: "flex"
+			}
+		},
+		mainSm: {
+			display: "flex",
+			flexDirection: "column",
+			justifyContent: "space-between",
+			alignItems: "center",
+			height: "auto",
+			width: "100%",
+			[theme.breakpoints.up("md")]: {
+				display: "none"
+			}
+		},
+		newsLg: {
+			display: "none",
+			alignItems: "center",
+			justifyContent: "center",
+			width: "100%",
+			height: "100%",
+			marginRight: "2%",
+			maxHeight: "85vh",
+			overflow: "scroll",
+			borderRadius: "10px",
+			backgroundColor: "rgb(253, 249, 249)",
+			[theme.breakpoints.up("md")]: {
+				display: "block"
+			}
+		},
+		newsSm: {
+			display: "block",
+			alignItems: "center",
+			justifyContent: "center",
+			width: "100%",
+			height: "auto",
+			marginRight: "2%",
+			overflow: "scroll",
+			borderRadius: "10px",
+			backgroundColor: "rgb(253, 249, 249)",
+			[theme.breakpoints.up("md")]: {
+				display: "none"
+			}
+		}
+	}))
+
+	const classes = useStyles();
+
 	return (
-		<div className="App">
+		<div className={classes.app}>
 			<Navbar countries={countryList} updateCountryName={updateCountryName} />
-
-			<div className="app-container">
+			<Container className={classes.mainLg} maxWidth="false">
 				{selectedCountry ? <CountryModal country={selectedCountry} stats={countryStats}/> : null}
-
 				<Map clickCountry={clickCountry} selectedCountry={selectedCountry} />
 				{selectedCountry ? (
-					<div className="news-container">
+					<div className={classes.newsLg}>
+						{statusCode === "200" ? (
+							articles.length > 0 ? (
+								<Articles articles={articles} />
+							) : (
+								<NoArticle country={selectedCountry} />
+							)
+						) : (
+							<LoadingCards />
+						)}
+					</div>
+				) : null}
+			</Container>
+			<Container className={classes.mainSm} maxWidth="false">
+				{selectedCountry ? <CountryModal country={selectedCountry} stats={countryStats}/> : null}
+				<Map clickCountry={clickCountry} selectedCountry={selectedCountry} />
+				{selectedCountry ? (
+					<div className={classes.newsSm}>
 						{statusCode === "200" ? (
 							articles.length > 0 ? (
 								<Articles articles={articles} country={selectedCountry}/>
@@ -92,7 +174,7 @@ const App = () => {
 						)}
 					</div>
 				) : null}
-			</div>
+			</Container>
 		</div>
 	);
 };
