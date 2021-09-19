@@ -6,7 +6,6 @@ import {
 	Geography,
 	Markers,
 	Marker,
-	ZoomableGroup,
 } from "react-simple-maps";
 
 import "./styles/Map.css";
@@ -15,8 +14,6 @@ const mapStyles = {
 	width: "90%",
 	height: "100%",
 };
-
-var countryDetails = require("../country_details.js");
 
 const Map = ({ clickCountry, selectedCountry }) => {
 	return (
@@ -51,7 +48,7 @@ const Map = ({ clickCountry, selectedCountry }) => {
 										default: {
 											fill:
 												selectedCountry &&
-												geo.id === selectedCountry.three_digit_ISO_country_code
+													geo.id === selectedCountry.three_digit_ISO_country_code
 													? "orange"
 													: "rgb(165, 212, 168)",
 										},
