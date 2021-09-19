@@ -65,8 +65,6 @@ const App = () => {
 			position: "absolute",
 			width: "100vw",
 			maxHeight: "none",
-			backgroundImage: "url('https://cabins-seeds.s3.amazonaws.com/smooth_stars.gif')",
-			backgroundSize: "2000px 1000px",
 			[theme.breakpoints.up("md")]: {
 				maxHeight: "100vh"
 			}
