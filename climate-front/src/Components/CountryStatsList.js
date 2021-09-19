@@ -126,6 +126,9 @@ const CountryStatsList = ({ countryData }) => {
                     />
                 </ListItem>
             </List>
+            <Typography sx={{ mb: 2 }} variant="h12" component="div">
+                <em>Source: <a href="https://ourworldindata.org/co2-and-other-greenhouse-gas-emissions">Our World in Data</a></em>
+            </Typography>
         </Box>
     );
 }
