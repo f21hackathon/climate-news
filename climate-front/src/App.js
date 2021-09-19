@@ -54,17 +54,6 @@ const App = () => {
 		setSelectedCountry(foundCountry);
 		getNewsData(foundCountry.country);
 		getCountryStats(foundCountry.country);
-		updateClimateNewsHeader(foundCountry.country);
-	};
-
-	// update "Climate News" header with selected country
-	const updateClimateNewsHeader = (country) => {
-		let newTitle = country + " Climate News";
-
-		window.onload = function setName(country){
-			document.getElementById("NewsCardsHeader").innerHTML = newTitle;
-			console.log('working', newTitle);
-		};
 	};
 	
 	return (
