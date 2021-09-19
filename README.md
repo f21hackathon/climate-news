@@ -1,4 +1,4 @@
-# Climate News
+# ![alt_text](https://github.com/f21hackathon/climate-news/blob/main/climate-front/src/Components/styles/earth.png) Climate News
 Global news web application  
 
 
