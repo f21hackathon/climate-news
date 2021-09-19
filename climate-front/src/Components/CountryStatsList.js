@@ -21,9 +21,10 @@ const CountryStatsList = ({ countryData }) => {
     // Data is not immediately available. Set to null until it later becomes available.
     const data = countryData ? countryData.data : null;
     const len = data ? data.length : null;
+    const year = data ? data[len-1]["year"] : null;
 
     // ISO 3166-1 alpha-3 - three-letter country codes
-    const isoCode = countryData ? countryData.iso_code : null; 
+    const isoCode = countryData ? countryData.iso_code : null;
 
     // Population by country
     const population = data ? data[len-1]["population"] : null;
@@ -127,7 +128,7 @@ const CountryStatsList = ({ countryData }) => {
                 </ListItem>
             </List>
             <Typography sx={{ mb: 2 }} variant="h12" component="div">
-                <em>Source: <a href="https://ourworldindata.org/co2-and-other-greenhouse-gas-emissions">Our World in Data</a></em>
+                <em>Source: <a href="https://ourworldindata.org/co2-and-other-greenhouse-gas-emissions">Our World in Data ({year})</a></em>
             </Typography>
         </Box>
     );
