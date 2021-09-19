@@ -10,16 +10,21 @@ import earth from "./styles/earth.png"
 import "./styles/Navbar.css";
 
 const useStyles = makeStyles((theme) => ({
+	toolbar: {
+		display: "flex",
+		flexDirection: "row",
+		justifyContent: "space-between"
+	},
 	logoLg: {
 		display: "none",
-		[theme.breakpoints.up("sm")]: {
+		[theme.breakpoints.up("md")]: {
 			display: "block",
 			flexGrow: 1
 		}
 	},
 	logoSm: {
 		display: "block",
-		[theme.breakpoints.up("xs")]: {
+		[theme.breakpoints.up("md")]: {
 			display: "none",
 			flexGrow: 1
 		}
@@ -45,7 +50,7 @@ const Navbar = ({ countries }) => {
 	return (
 		<Box sx={{ flexGrow: 1 }}>
 			<AppBar position="static" style={{ background: "#219fff" }}>
-				<Toolbar>
+				<Toolbar className={classes.toolbar}>
 					<Typography
 						variant="h6"
 						noWrap
@@ -61,9 +66,7 @@ const Navbar = ({ countries }) => {
 						className={classes.logoSm}>
 						<img src={earth} alt="Logo" className="logo"/>
 					</Typography>
-
 					<FreeSoloCreateOption countries={countries} />
-
 				</Toolbar>
 			</AppBar>
 		</Box>
