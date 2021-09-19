@@ -14,6 +14,8 @@ import PeopleOutlineIcon from '@mui/icons-material/PeopleOutline';
 import PublicIcon from '@mui/icons-material/Public';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import InfoIcon from '@mui/icons-material/Info';
+import PieChartIcon from "@mui/icons-material/PieChart";
+import ShowChartIcon from "@mui/icons-material/ShowChart";
 
 const CountryStatsList = ({ countryData }) => {
     // Data is not immediately available. Set to null until it later becomes available.
@@ -28,10 +30,6 @@ const CountryStatsList = ({ countryData }) => {
 
     // Annual production-based emissions of carbon dioxide (CO2), measured in tonnes per person.
     const co2PerCapita = data ? `${data[len-1]["co2_per_capita"]} tonnes per person` : null;
-
-    // Total greenhouse gas emissions including land use change and forestry, measured in 
-    // tonnes of carbon dioxide-equivalents per capita.
-    const ghgPerCapita = data ? `${data[len-1]["ghg_per_capita"]} tonnes per person` : null;
 
     // Annual production-based emissions of carbon dioxide (CO2), measured as a percentage of global
     // production-based emissions of CO2 in the same year.
@@ -99,26 +97,11 @@ const CountryStatsList = ({ countryData }) => {
                 </ListItem>
                 <ListItem>
                     <Tooltip
-                        title="Total greenhouse gas emissions including land use change and forestry, measured in tonnes of carbon dioxide-equivalents per capita."
-                        placement="top-start">
-                        <ListItemAvatar>
-                            <Avatar>
-                                <PeopleOutlineIcon />
-                            </Avatar>
-                        </ListItemAvatar>
-                    </Tooltip>
-                    <ListItemText
-                        primary="Greenhouse Gas Emissions"
-                        secondary={ghgPerCapita}
-                    />
-                </ListItem>
-                <ListItem>
-                    <Tooltip
                         title="Annual production-based emissions of carbon dioxide (CO2), measured as a percentage of global production-based emissions of CO2 in the same year"
                         placement="top-start">
                         <ListItemAvatar>
                             <Avatar>
-                                <PublicIcon />
+                                <PieChartIcon />
                             </Avatar>
                         </ListItemAvatar>
                     </Tooltip>
@@ -133,7 +116,7 @@ const CountryStatsList = ({ countryData }) => {
                         placement="top-start">
                         <ListItemAvatar>
                             <Avatar>
-                                <PeopleOutlineIcon />
+                                <ShowChartIcon />
                             </Avatar>
                         </ListItemAvatar>
                     </Tooltip>
