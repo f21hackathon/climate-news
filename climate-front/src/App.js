@@ -25,7 +25,6 @@ const App = () => {
 
 	// Same as clickCountry but for searching instead of clicking map
 	const searchCountry = (countryInput) => {
-		console.log("SELECTED COUNTRY: ", countryInput);
 		getNewsData(countryInput);
 		getCountryStats(countryInput);
 	};
@@ -67,7 +66,6 @@ const App = () => {
 		const foundCountry = countryList.filter(
 			(x) => x.three_digit_ISO_country_code === geo.id.toString()
 		)[0];
-		console.log("selectedCountry: ", foundCountry);
 		setSelectedCountry(foundCountry);
 		getNewsData(foundCountry.country);
 		getCountryStats(foundCountry.country);
