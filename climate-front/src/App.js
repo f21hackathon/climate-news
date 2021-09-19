@@ -24,6 +24,7 @@ const App = () => {
 		setSelectedCountry("SELECTED: ", countryInput);
 	};
 
+	// Get climate stats for given country
 	const getCountryStats = async (country) => {
 		const STATS_URI = `https://gcn-api-dev.herokuapp.com:443/climate-data/${country}`;
 		const res = await axios.get(STATS_URI);
@@ -31,6 +32,7 @@ const App = () => {
 		setCountryStats(data);
 	};
 
+	// Get news articles for given country
 	const getNewsData = async (country) => {
 		setArticles([]);
 		setStatusCode("");

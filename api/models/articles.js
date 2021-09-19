@@ -1,7 +1,8 @@
-const { url } = require("inspector");
+const url = require("inspector");
 const mongoose = require("mongoose");
 const axios = require("axios");
 
+// MongoDB Atlas Connection
 mongoose.connect(
 	"mongodb+srv://admin:admin@cluster0.19vdk.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
 	{
@@ -33,6 +34,9 @@ const articleSchema = mongoose.Schema({
 
 const Article = mongoose.model("Article", articleSchema);
 
+/********************* DB methods *********************/
+
+// Adds a single news article to DB
 const addArticle = async (country, articleObj) => {
 	// Only add article if an article with same title does not exist
 	Article.findOne({title: articleObj.title}, function(err, result) {
@@ -62,25 +66,13 @@ const addArticle = async (country, articleObj) => {
 	});
 };
 
-const findArticles = async (country = "USA") => {
+// Return most recent news articles for given country
+const findArticles = async (country) => {
 	await insertNewsArticles(country);
-	await sleep(4000);
 	return await loadNewsArticles(country);
 };
 
-function sleep(ms) {
-	return new Promise((resolve) => {
-		setTimeout(resolve, ms);
-	});
-}
-
-async function loadNewsArticles(country) {
-	const query = Article.find({ country: country }).limit(20);
-	const result = await query.exec();
-	console.log(result);
-	return result;
-}
-
+// Populates DB with news articles for given country from NewsAPI
 async function insertNewsArticles(country) {
 	getNewsArticles(country)
 		.then((res) => {
@@ -89,12 +81,26 @@ async function insertNewsArticles(country) {
 			}
 		})
 		.catch((err) => {
-			console.log("Something went wrong...\n", err);
+			console.log("Failed to insert article into DB...\n", err);
 		});
 }
 
+// Loads most recent articles for given country from DB
+async function loadNewsArticles(country) {
+	const query = Article.find({ country: country }).limit(20);
+	const result = await query.exec();
+	return result;
+}
+
+/********************* API methods *********************/
+
+// Using multiple API keys since we are hitting limits often
+//const NEWS_API_KEY = "5612223de971402996a0a1f3130c00d2"
+//const NEWS_API_KEY = "3a09f01bf6174499b438bfaa14eea1f5"
+const NEWS_API_KEY = "364a33768ecd4c6691bc0da6e4da0800";
+
+// Queries NewsAPI for articles for given country
 async function getNewsArticles(country) {
-	const NEWS_API_KEY = "5612223de971402996a0a1f3130c00d2"
 	const URL =
 		`https://newsapi.org/v2/everything?` +
 		`q=+${country} energy environment "global warming"` +
