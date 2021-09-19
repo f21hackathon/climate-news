@@ -4,6 +4,9 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import FreeSoloCreateOption from "./SearchBar";
+import earth from "./styles/earth.png"
+
+import "./styles/Navbar.css";
 
 const Navbar = ({ countries }) => {
 	// Handles updating state when something is typed in the search bar
@@ -28,7 +31,9 @@ const Navbar = ({ countries }) => {
 						noWrap
 						component="div"
 						sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}>
-						<u>Climate News</u>
+						<img src={earth} alt="Logo" className="logo"/>
+						<b>Climate News</b>
+						
 					</Typography>
 
 					<FreeSoloCreateOption countries={countries} />
