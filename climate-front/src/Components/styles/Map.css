@@ -7,14 +7,6 @@
 	z-index: 0;
 }
 
-.circle {
-	/* background-color: rgb(240, 0, 240); */
-}
-
 .map-container:hover {
 	cursor: pointer;
-}
-
-.geography {
-	/* background-color: yellow; */
 }
