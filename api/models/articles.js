@@ -68,7 +68,27 @@ const addArticle = async (country, articleObj) => {
 
 // Return most recent news articles for given country
 const findArticles = async (country) => {
-	await insertNewsArticles(country);
+	// Only query API if no articles exist for country, or if last published article
+	// is over one week old (queries return limited news articles so a lot of them are
+	// a few days old).
+	await Article.find({country: country})
+		.sort("publishedAt")
+		.exec(async function(err, result) {
+			if (err) {
+			} else {
+				if (!result.length) {
+					await insertNewsArticles(country);
+				} else {
+					var yesterday = new Date();
+					yesterday.setDate(yesterday.getDate() - 7);
+					var mostRecentDate = new Date(result[0].publishedAt);
+					if (mostRecentDate < yesterday) {
+						await insertNewsArticles(country);
+					}
+				}
+			}
+		})
+	await sleep(2000);
 	return await loadNewsArticles(country);
 };
 
@@ -97,20 +117,28 @@ async function loadNewsArticles(country) {
 // Using multiple API keys since we are hitting limits often
 //const NEWS_API_KEY = "5612223de971402996a0a1f3130c00d2"
 //const NEWS_API_KEY = "3a09f01bf6174499b438bfaa14eea1f5"
-const NEWS_API_KEY = "364a33768ecd4c6691bc0da6e4da0800";
+//const NEWS_API_KEY = "364a33768ecd4c6691bc0da6e4da0800";
+const NEWS_API_KEY = "14ec7673538348e9a11dbcafc7770f83";
 
 // Queries NewsAPI for articles for given country
 async function getNewsArticles(country) {
 	const URL =
 		`https://newsapi.org/v2/everything?` +
 		`q=+${country} energy environment "global warming"` +
-		`change&pageSize=20&from=2021&sortBy=publishedAt&apiKey=${NEWS_API_KEY}`;
+		`change&pageSize=5&from=2021&sortBy=publishedAt&apiKey=${NEWS_API_KEY}`;
 
 	try {
 		return await axios.get(URL);
 	} catch (err) {
 		console.log("Failed to retrieve news articles...\n");
 	}
+}
+
+/********************* Helper methods *********************/
+
+// Sleep function to wait for async queries to sync
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 module.exports = {
