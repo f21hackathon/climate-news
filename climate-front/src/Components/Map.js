@@ -17,7 +17,7 @@ const mapStyles = {
 	height: "100%",
 };
 
-const Map = ({ clickCountry, selectedCountry, handleHover }) => {
+const Map = ({ clickCountry, selectedCountry }) => {
 	return (
 		<div className="map-container">
 			<ComposableMap
@@ -41,8 +41,8 @@ const Map = ({ clickCountry, selectedCountry, handleHover }) => {
 						{(geos, proj) =>
 							geos.map((geo, i) => (
 								<Geography
-									onMouseEnter={(e) => handleHover(geo, e)}
-									onMouseLeave={(e) => handleHover("", e)}
+									// onMouseEnter={(e) => handleHover(geo, e)}
+									// onMouseLeave={(e) => handleHover("", e)}
 									className="geography"
 									onClick={(e) => clickCountry(geo, e)}
 									key={geo.id + i}
@@ -52,14 +52,14 @@ const Map = ({ clickCountry, selectedCountry, handleHover }) => {
 										default: {
 											fill:
 												selectedCountry &&
-													geo.id === selectedCountry.three_digit_ISO_country_code
+												geo.id === selectedCountry.three_digit_ISO_country_code
 													? "orange"
 													: "rgb(165, 212, 168)",
 										},
 									}}
 								/>
 							))
-						}   
+						}
 					</Geographies>
 				</ZoomableGlobe>
 			</ComposableMap>

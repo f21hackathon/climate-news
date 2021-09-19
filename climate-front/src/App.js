@@ -10,33 +10,41 @@ import CountryModal from "./Components/CountryModal";
 import CountryHover from "./Components/CountryHover";
 
 import { countryList } from "./countryList";
-import { Container } from "@material-ui/core"; 
+import { Container } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
-
 
 import "./App.css";
 
-
-
 const App = () => {
 	const [articles, setArticles] = useState([]);
-	const [selectedCountry, setSelectedCountry] = useState("");
+	const [selectedCountry, setSelectedCountry] = useState({
+		ISOcode: "",
+		country: "",
+		image: "",
+		three_digit_ISO_country_code: "",
+	});
 	const [statusCode, setStatusCode] = useState("");
 	const [countryStats, setCountryStats] = useState([]);
 	const [hover, setHover] = useState("");
 
+	// const handleHover = (geo, e) => {
+	// 	if (geo.id) {
+	// 		const foundCountry = countryList.filter(
+	// 			(x) => x.three_digit_ISO_country_code === geo.id.toString()
+	// 		)[0];
 
-	const handleHover = (geo, e) => {
-		if (geo.id) {
-			const foundCountry = countryList.filter(
-				(x) => x.three_digit_ISO_country_code === geo.id.toString()
-			)[0];
+	// 		setHover(foundCountry.country);
+	// 	} else {
+	// 		setHover("");
+	// 	}
+	// 	// console.log("HOVER COUNTRY: ", hover);
+	// };
 
-			setHover(foundCountry.country);
-		} else {
-			setHover("");
-		}
-		console.log("HOVER COUNTRY: ", hover);
+	// Same as clickCountry but for searching instead of clicking map
+	const searchCountry = (countryInput) => {
+		console.log("SELECTED COUNTRY: ", countryInput);
+		getNewsData(countryInput);
+		getCountryStats(countryInput);
 	};
 
 	const [text, setText] = useState("");
@@ -44,18 +52,15 @@ const App = () => {
 	// constants added for clipboard copy function
 	const [isCopied, setIsCopied] = useState(false);
 	const onCopyText = () => {
-	setIsCopied(true);
-	setTimeout(() => {
-	  setIsCopied(false);
-	}, 1000);
+		setIsCopied(true);
+		setTimeout(() => {
+			setIsCopied(false);
+		}, 1000);
 	};
 
-	
 	const updateCountryName = (countryInput) => {
 		setSelectedCountry("SELECTED: ", countryInput);
 	};
-
-
 
 	// Get climate stats for given country
 	const getCountryStats = async (country) => {
@@ -81,6 +86,7 @@ const App = () => {
 		const foundCountry = countryList.filter(
 			(x) => x.three_digit_ISO_country_code === geo.id.toString()
 		)[0];
+		console.log("selectedCountry: ", foundCountry);
 		setSelectedCountry(foundCountry);
 		getNewsData(foundCountry.country);
 		getCountryStats(foundCountry.country);
@@ -94,8 +100,8 @@ const App = () => {
 			width: "100vw",
 			maxHeight: "none",
 			[theme.breakpoints.up("md")]: {
-				maxHeight: "100vh"
-			}
+				maxHeight: "100vh",
+			},
 		},
 		mainLg: {
 			display: "none",
@@ -104,8 +110,8 @@ const App = () => {
 			alignItems: "center",
 			height: "93vh",
 			[theme.breakpoints.up("md")]: {
-				display: "flex"
-			}
+				display: "flex",
+			},
 		},
 		mainSm: {
 			display: "flex",
@@ -115,8 +121,8 @@ const App = () => {
 			height: "auto",
 			width: "100%",
 			[theme.breakpoints.up("md")]: {
-				display: "none"
-			}
+				display: "none",
+			},
 		},
 		newsLg: {
 			display: "none",
@@ -130,8 +136,8 @@ const App = () => {
 			borderRadius: "10px",
 			backgroundColor: "rgb(253, 249, 249)",
 			[theme.breakpoints.up("md")]: {
-				display: "block"
-			}
+				display: "block",
+			},
 		},
 		newsSm: {
 			display: "block",
@@ -144,21 +150,33 @@ const App = () => {
 			borderRadius: "10px",
 			backgroundColor: "rgb(253, 249, 249)",
 			[theme.breakpoints.up("md")]: {
-				display: "none"
-			}
-		}
-	}))
+				display: "none",
+			},
+		},
+	}));
 
 	const classes = useStyles();
 
 	return (
 		<div className={classes.app}>
-			<Navbar countries={countryList} updateCountryName={updateCountryName} />
+			<Navbar
+				countries={countryList}
+				// updateCountryName={updateCountryName}
+				selectedCountry={selectedCountry}
+				setSelectedCountry={setSelectedCountry}
+				searchCountry={searchCountry}
+			/>
 			<Container className={classes.mainLg} maxWidth="false">
-				{selectedCountry ? <CountryModal country={selectedCountry} stats={countryStats}/> : null}
-				<Map clickCountry={clickCountry} handleHover={handleHover} selectedCountry={selectedCountry} />
+				{selectedCountry.country ? (
+					<CountryModal country={selectedCountry} stats={countryStats} />
+				) : null}
+				<Map
+					clickCountry={clickCountry}
+					// handleHover={handleHover}
+					selectedCountry={selectedCountry}
+				/>
 
-				{selectedCountry ? (
+				{selectedCountry.country ? (
 					<div className={classes.newsLg}>
 						{statusCode === "200" ? (
 							articles.length > 0 ? (
@@ -173,13 +191,19 @@ const App = () => {
 				) : null}
 			</Container>
 			<Container className={classes.mainSm} maxWidth="false">
-				{selectedCountry ? <CountryModal country={selectedCountry} stats={countryStats}/> : null}
-				<Map clickCountry={clickCountry} handleHover={handleHover} selectedCountry={selectedCountry} />
-				{selectedCountry ? (
+				{selectedCountry.country ? (
+					<CountryModal country={selectedCountry} stats={countryStats} />
+				) : null}
+				<Map
+					clickCountry={clickCountry}
+					// handleHover={handleHover}
+					selectedCountry={selectedCountry}
+				/>
+				{selectedCountry.country ? (
 					<div className={classes.newsSm}>
 						{statusCode === "200" ? (
 							articles.length > 0 ? (
-								<Articles articles={articles} country={selectedCountry}/>
+								<Articles articles={articles} country={selectedCountry} />
 							) : (
 								<NoArticle country={selectedCountry} />
 							)

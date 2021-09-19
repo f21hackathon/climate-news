@@ -12,7 +12,7 @@ const CountryModal = (props) => {
 			alignItems: "center",
 			justifyContent: "center",
 			height: "100%",
-			width: "100%"
+			width: "100%",
 		},
 		statsLg: {
 			overflow: "hidden",
@@ -28,8 +28,8 @@ const CountryModal = (props) => {
 			borderRadius: "10px",
 			margin: "1%",
 			[theme.breakpoints.up("md")]: {
-				display: "flex"
-			}
+				display: "flex",
+			},
 		},
 		statsSm: {
 			overflow: "hidden",
@@ -44,44 +44,42 @@ const CountryModal = (props) => {
 			borderRadius: "10px",
 			margin: "1%",
 			[theme.breakpoints.up("md")]: {
-				display: "none"
-			}
+				display: "none",
+			},
 		},
-	}))
+	}));
 
 	const classes = useStyles();
 	return (
-		<div
-			className={classes.main}
-		>
-		<Container
-			className={classes.statsLg}
-			maxWidth="false"
-		>
-			<div className="country-name-container">
-				<img className="flag-img" src={props.country.image} alt={props.country.image} />
-				<h3>{props.country.country}</h3>
-			</div>
+		<div className={classes.main}>
+			<Container className={classes.statsLg} maxWidth="false">
+				<div className="country-name-container">
+					<img
+						className="flag-img"
+						src={props.country.image}
+						alt={props.country.image}
+					/>
+					<h3>{props.country.country}</h3>
+				</div>
 
-			<div className="country-stats" style={{maxHeight: "100%"}}>
-				<CountryStatsList countryData={props.stats}/>
-			</div>
+				<div className="country-stats" style={{ maxHeight: "100%" }}>
+					<CountryStatsList countryData={props.stats} />
+				</div>
+			</Container>
+			<Container className={classes.statsSm} maxWidth="false">
+				<div className="country-name-container">
+					<img
+						className="flag-img"
+						src={props.country.image}
+						alt={props.country.image}
+					/>
+					<h3>{props.country.country}</h3>
+				</div>
 
-		</Container>
-		<Container
-			className={classes.statsSm}
-			maxWidth="false"
-		>
-			<div className="country-name-container">
-				<img className="flag-img" src={props.country.image} alt={props.country.image} />
-				<h3>{props.country.country}</h3>
-			</div>
-
-			<div className="country-stats" style={{maxHeight: "100%"}}>
-				<CountryStatsList countryData={props.stats}/>
-			</div>
-
-		</Container>
+				<div className="country-stats" style={{ maxHeight: "100%" }}>
+					<CountryStatsList countryData={props.stats} />
+				</div>
+			</Container>
 		</div>
 	);
 };
