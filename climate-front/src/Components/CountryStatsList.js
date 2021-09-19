@@ -15,6 +15,13 @@ import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 
 
 const CountryStatsList = ({ countryData }) => {
+    // Data is not immediately available. Set to null until it later becomes available.
+    const data = countryData ? countryData.data : null;
+    const len = data ? data.length : null;
+    const population = data ? data[len-1]["population"] : null;
+    const co2PerCapita = data ? data[len-1]["co2_per_capita"] : null;
+    const cumCo2 = data ? data[len-1]["cumulative_co2"] : null;
+    const globalCo2Share = data ? data[len-1]["share_global_co2"] : null;
 
     return (
         <Box sx={{ flexGrow: 0, maxWidth: 752 }}>
@@ -30,7 +37,7 @@ const CountryStatsList = ({ countryData }) => {
                     </ListItemAvatar>
                     <ListItemText
                         primary="Population"
-                        //secondary={ countryData[0]["population"] }
+                        secondary={population}
                     />
                 </ListItem>
                 <ListItem>
@@ -41,7 +48,7 @@ const CountryStatsList = ({ countryData }) => {
                     </ListItemAvatar>
                     <ListItemText
                         primary="CO2 per Capita"
-                        //secondary={ countryData[0]["co2_per_capita"] }
+                        secondary={co2PerCapita}
                     />
                 </ListItem>
                 <ListItem>
@@ -52,7 +59,7 @@ const CountryStatsList = ({ countryData }) => {
                     </ListItemAvatar>
                     <ListItemText
                         primary="Cumulative CO2"
-                        //secondary={ countryData[0]["cumulative_co2"] }
+                        secondary={cumCo2}
                     />
                 </ListItem>
                 <ListItem>
@@ -63,7 +70,7 @@ const CountryStatsList = ({ countryData }) => {
                     </ListItemAvatar>
                     <ListItemText
                         primary="Global Share of CO2"
-                        //secondary={ countryData[0]["share_global_co2"] }
+                        secondary={globalCo2Share}
                     />
                 </ListItem>
             </List>

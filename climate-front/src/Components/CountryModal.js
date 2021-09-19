@@ -3,7 +3,6 @@ import "./styles/CountryModal.css";
 import CountryStatsList from "./CountryStatsList";
 
 const CountryModal = (props) => {
-	console.log("STATS: ", props.stats);
 	return (
 		<div className="country-modal-container">
 			<div className="country-name-container">
