@@ -20,7 +20,7 @@ video {
 
 
 /* added custom styling for video to be replace by static image on mobile */
-@media (max-width: 767px) {
+@media (max-width: 900px) {
     #videoBG {
         display: none;
     }
