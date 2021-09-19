@@ -2,19 +2,11 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 70%;
+	width: 100%;
 	height: 100%;
 	z-index: 0;
 }
 
-.circle {
-	/* background-color: rgb(240, 0, 240); */
-}
-
 .map-container:hover {
 	cursor: pointer;
-}
-
-.geography {
-	/* background-color: yellow; */
 }
