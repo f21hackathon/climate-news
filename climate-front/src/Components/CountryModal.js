@@ -14,7 +14,7 @@ const CountryModal = (props) => {
 			height: "100%",
 			width: "100%",
 		},
-		statsLg: {
+		countryModalContainerLg: {
 			overflow: "hidden",
 			overflowY: "scroll",
 			display: "none",
@@ -31,7 +31,7 @@ const CountryModal = (props) => {
 				display: "flex",
 			},
 		},
-		statsSm: {
+		countryModalContainerSm: {
 			overflow: "hidden",
 			overflowY: "scroll",
 			display: "flex",
@@ -51,34 +51,33 @@ const CountryModal = (props) => {
 
 	const classes = useStyles();
 	return (
-		<div className={classes.main}>
-			<Container className={classes.statsLg} maxWidth="false">
+		<div
+			className={classes.main}
+		>
+			<Container
+				className={classes.countryModalContainerLg}
+				maxWidth="false"
+			>
 				<div className="country-name-container">
-					<img
-						className="flag-img"
-						src={props.country.image}
-						alt={props.country.image}
-					/>
+					<img className="flag-img" src={props.country.image} alt={props.country.image} />
 					<h3>{props.country.country}</h3>
 				</div>
 
-				<div className="country-stats" style={{ maxHeight: "100%" }}>
-					<CountryStatsList countryData={props.stats} />
+				<div className="country-stats" style={{maxHeight: "100%"}}>
+					<CountryStatsList countryData={props.stats}/>
 				</div>
 			</Container>
-			<Container className={classes.statsSm} maxWidth="false">
+			<Container
+				className={classes.countryModalContainerSm}
+				maxWidth="false"
+			>
 				<div className="country-name-container">
-					<img
-						className="flag-img"
-						src={props.country.image}
-						alt={props.country.image}
-					/>
+					<img className="flag-img" src={props.country.image} alt={props.country.image} />
 					<h3>{props.country.country}</h3>
 				</div>
-
-				<div className="country-stats" style={{ maxHeight: "100%" }}>
-					<CountryStatsList countryData={props.stats} />
-				</div>
+					<div className="country-stats" style={{ maxHeight: "100%" }}>
+						<CountryStatsList countryData={props.stats} />
+					</div>
 			</Container>
 		</div>
 	);

@@ -1,15 +1,9 @@
-import React, { useState } from "react";
 import {
 	ComposableMap,
 	ZoomableGlobe,
 	Geographies,
 	Geography,
-	Markers,
-	Marker,
 } from "react-simple-maps";
-import { geoPath } from "d3-geo";
-import { geoTimes } from "d3-geo-projection";
-
 import "./styles/Map.css";
 
 const mapStyles = {

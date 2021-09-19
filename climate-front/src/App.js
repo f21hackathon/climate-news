@@ -1,19 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import Articles from "./Components/Articles";
 import Map from "./Components/Map";
 import Navbar from "./Components/Navbar";
-import Loading from "./Components/Loading";
 import LoadingCards from "./Components/LoadingCards";
 import NoArticle from "./Components/NoArticle";
 import CountryModal from "./Components/CountryModal";
-import CountryHover from "./Components/CountryHover";
 
 import { countryList } from "./countryList";
 import { Container } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
-
-import "./App.css";
 
 const App = () => {
 	const [articles, setArticles] = useState([]);
@@ -27,26 +23,11 @@ const App = () => {
 	const [countryStats, setCountryStats] = useState([]);
 	const [hover, setHover] = useState("");
 
-	// const handleHover = (geo, e) => {
-	// 	if (geo.id) {
-	// 		const foundCountry = countryList.filter(
-	// 			(x) => x.three_digit_ISO_country_code === geo.id.toString()
-	// 		)[0];
-
-	// 		setHover(foundCountry.country);
-	// 	} else {
-	// 		setHover("");
-	// 	}
-	// 	// console.log("HOVER COUNTRY: ", hover);
-	// };
-
 	// Same as clickCountry but for searching instead of clicking map
 	const searchCountry = (countryInput) => {
 		getNewsData(countryInput);
 		getCountryStats(countryInput);
 	};
-
-	const [text, setText] = useState("");
 
 	// constants added for clipboard copy function
 	const [isCopied, setIsCopied] = useState(false);
@@ -101,7 +82,7 @@ const App = () => {
 				maxHeight: "100vh",
 			},
 		},
-		mainLg: {
+		appContainerLg: {
 			display: "none",
 			flexDirection: "row",
 			justifyContent: "space-between",
@@ -111,7 +92,7 @@ const App = () => {
 				display: "flex",
 			},
 		},
-		mainSm: {
+		appContainerSm: {
 			display: "flex",
 			flexDirection: "column",
 			justifyContent: "space-between",
@@ -122,7 +103,7 @@ const App = () => {
 				display: "none",
 			},
 		},
-		newsLg: {
+		newsContainerLg: {
 			display: "none",
 			alignItems: "center",
 			justifyContent: "center",
@@ -137,7 +118,7 @@ const App = () => {
 				display: "block",
 			},
 		},
-		newsSm: {
+		newsContainerSm: {
 			display: "block",
 			alignItems: "center",
 			justifyContent: "center",
@@ -159,23 +140,20 @@ const App = () => {
 		<div className={classes.app}>
 			<Navbar
 				countries={countryList}
-				// updateCountryName={updateCountryName}
 				selectedCountry={selectedCountry}
 				setSelectedCountry={setSelectedCountry}
 				searchCountry={searchCountry}
 			/>
-			<Container className={classes.mainLg} maxWidth="false">
+			<Container className={classes.appContainerLg} maxWidth="false">
 				{selectedCountry.country ? (
 					<CountryModal country={selectedCountry} stats={countryStats} />
 				) : null}
 				<Map
 					clickCountry={clickCountry}
-					// handleHover={handleHover}
 					selectedCountry={selectedCountry}
 				/>
-
 				{selectedCountry.country ? (
-					<div className={classes.newsLg}>
+					<div className={classes.newsContainerLg}>
 						{statusCode === "200" ? (
 							articles.length > 0 ? (
 								<Articles articles={articles} />
@@ -188,17 +166,16 @@ const App = () => {
 					</div>
 				) : null}
 			</Container>
-			<Container className={classes.mainSm} maxWidth="false">
+			<Container className={classes.appContainerSm} maxWidth="false">
 				{selectedCountry.country ? (
 					<CountryModal country={selectedCountry} stats={countryStats} />
 				) : null}
 				<Map
 					clickCountry={clickCountry}
-					// handleHover={handleHover}
 					selectedCountry={selectedCountry}
 				/>
 				{selectedCountry.country ? (
-					<div className={classes.newsSm}>
+					<div className={classes.newsContainerSm}>
 						{statusCode === "200" ? (
 							articles.length > 0 ? (
 								<Articles articles={articles} country={selectedCountry} />
