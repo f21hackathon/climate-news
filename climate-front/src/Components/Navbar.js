@@ -51,6 +51,7 @@ const Navbar = ({ countries }) => {
 						noWrap
 						component="div"
 						className={classes.logoLg}>
+						<img src={earth} alt="Logo" className="logo"/>
 						Climate News
 					</Typography>
 					<Typography
@@ -58,7 +59,6 @@ const Navbar = ({ countries }) => {
 						noWrap
 						component="div"
 						className={classes.logoSm}>
-						CN	
 						<img src={earth} alt="Logo" className="logo"/>
 					</Typography>
 
