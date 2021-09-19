@@ -54,45 +54,30 @@ const CountryModal = (props) => {
 		<div
 			className={classes.main}
 		>
-		<Container
-			className={classes.countryModalContainerLg}
-			maxWidth="false"
-		>
-			<div className="country-name-container">
-				<img className="flag-img" src={props.country.image} alt={props.country.image} />
-				<h3>{props.country.country}</h3>
-			</div>
-
-			<div className="country-stats" style={{maxHeight: "100%"}}>
-				<CountryStatsList countryData={props.stats}/>
-			</div>
-
-		</Container>
-		<Container
-			className={classes.countryModalContainerSm}
-			maxWidth="false"
-		>
-			<div className="country-name-container">
-				<img className="flag-img" src={props.country.image} alt={props.country.image} />
-				<h3>{props.country.country}</h3>
-			</div>
-				<div className="country-stats" style={{ maxHeight: "100%" }}>
-					<CountryStatsList countryData={props.stats} />
-				</div>
-			</Container>
-			<Container className={classes.statsSm} maxWidth="false">
+			<Container
+				className={classes.countryModalContainerLg}
+				maxWidth="false"
+			>
 				<div className="country-name-container">
-					<img
-						className="flag-img"
-						src={props.country.image}
-						alt={props.country.image}
-					/>
+					<img className="flag-img" src={props.country.image} alt={props.country.image} />
 					<h3>{props.country.country}</h3>
 				</div>
 
-				<div className="country-stats" style={{ maxHeight: "100%" }}>
-					<CountryStatsList countryData={props.stats} />
+				<div className="country-stats" style={{maxHeight: "100%"}}>
+					<CountryStatsList countryData={props.stats}/>
 				</div>
+			</Container>
+			<Container
+				className={classes.countryModalContainerSm}
+				maxWidth="false"
+			>
+				<div className="country-name-container">
+					<img className="flag-img" src={props.country.image} alt={props.country.image} />
+					<h3>{props.country.country}</h3>
+				</div>
+					<div className="country-stats" style={{ maxHeight: "100%" }}>
+						<CountryStatsList countryData={props.stats} />
+					</div>
 			</Container>
 		</div>
 	);

@@ -23,17 +23,6 @@ const App = () => {
 	const [countryStats, setCountryStats] = useState([]);
 	const [hover, setHover] = useState("");
 
-	const handleHover = (geo, e) => {
-		if (geo.id) {
-			const foundCountry = countryList.filter(
-				(x) => x.three_digit_ISO_country_code === geo.id.toString()
-			)[0];
-
-			setHover(foundCountry.country);
-		} else {
-			setHover("");
-		}
-
 	// Same as clickCountry but for searching instead of clicking map
 	const searchCountry = (countryInput) => {
 		console.log("SELECTED COUNTRY: ", countryInput);
