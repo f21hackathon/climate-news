@@ -59,6 +59,9 @@ const Map = ({ clickCountry, selectedCountry }) => {
 								/>
 							))
 						}
+
+
+			            
 					</Geographies>
 
 					<Markers>
