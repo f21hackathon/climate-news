@@ -23,6 +23,7 @@ export default function ImgMediaCard({ article }) {
 	                    raw_author.substring(0, ARTICLE_AUTHOR_LENGTH - 1) + "…" : 
 	                    raw_author;
 
+
 	return (
 		<Card className="article">
 			<a className="article-link" href={article.url} target="_blank">
@@ -30,7 +31,7 @@ export default function ImgMediaCard({ article }) {
 					component="img"
 					alt={article.urlToImage}
 					height="140"
-					image={article.urlToImage}
+					image={article.urlToImage || 'defaultArticleImage.JPG'}
 				/>
 			</a>
 
