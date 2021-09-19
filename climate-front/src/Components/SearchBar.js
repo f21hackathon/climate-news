@@ -15,8 +15,10 @@ const FreeSoloCreateOption = ({
 	const [value, setValue] = useState(selectedCountry);
 
 	useEffect(() => {
-		setSelectedCountry(value);
-		searchCountry(value.country);
+		if (value !== null) {
+			setSelectedCountry(value);
+			searchCountry(value.country);
+		}
 	}, [value]);
 
 	return (
