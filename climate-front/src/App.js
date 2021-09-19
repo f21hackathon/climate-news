@@ -8,9 +8,12 @@ import Loading from "./Components/Loading";
 import LoadingCards from "./Components/LoadingCards";
 import NoArticle from "./Components/NoArticle";
 import { countryList } from "./countryList";
+import ReactDOM from 'react-dom';
+import {CopyToClipboard} from 'react-copy-to-clipboard';
 
 import "./App.css";
 import CountryModal from "./Components/CountryModal";
+
 
 
 const App = () => {
@@ -21,6 +24,18 @@ const App = () => {
 
 	console.log("STATUS CODE: ", statusCode);
 
+	const [text, setText] = useState("");
+
+	// constants added for clipboard copy function
+	const [isCopied, setIsCopied] = useState(false);
+	const onCopyText = () => {
+	setIsCopied(true);
+	setTimeout(() => {
+	  setIsCopied(false);
+	}, 1000);
+	};
+
+	
 	const updateCountryName = (countryInput) => {
 		setSelectedCountry("SELECTED: ", countryInput);
 	};
