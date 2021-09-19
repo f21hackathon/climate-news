@@ -23,7 +23,7 @@ const CountryModal = (props) => {
 			zIndex: 3,
 			backgroundColor: "rgb(253, 249, 249)",
 			height: "100%",
-			width: "100%",
+			width: "80%",
 			maxHeight: "85vh",
 			borderRadius: "10px",
 			margin: "1%",
