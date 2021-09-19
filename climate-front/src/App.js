@@ -6,13 +6,15 @@ import Navbar from "./Components/Navbar";
 import Loading from "./Components/Loading";
 import LoadingCards from "./Components/LoadingCards";
 import NoArticle from "./Components/NoArticle";
+import CountryModal from "./Components/CountryModal";
+import CountryHover from "./Components/CountryHover";
+
 import { countryList } from "./countryList";
 import { Container } from "@material-ui/core"; 
 import { makeStyles } from "@material-ui/styles";
 
 
 import "./App.css";
-import CountryModal from "./Components/CountryModal";
 
 
 
@@ -21,8 +23,21 @@ const App = () => {
 	const [selectedCountry, setSelectedCountry] = useState("");
 	const [statusCode, setStatusCode] = useState("");
 	const [countryStats, setCountryStats] = useState([]);
+	const [hover, setHover] = useState("");
 
-	console.log("STATUS CODE: ", statusCode);
+
+	const handleHover = (geo, e) => {
+		if (geo.id) {
+			const foundCountry = countryList.filter(
+				(x) => x.three_digit_ISO_country_code === geo.id.toString()
+			)[0];
+
+			setHover(foundCountry.country);
+		} else {
+			setHover("");
+		}
+		console.log("HOVER COUNTRY: ", hover);
+	};
 
 	const [text, setText] = useState("");
 
@@ -62,7 +77,7 @@ const App = () => {
 	};
 
 	// Find country by clicking on map
-	const clickCountry = (geo) => {
+	const clickCountry = (geo, e) => {
 		const foundCountry = countryList.filter(
 			(x) => x.three_digit_ISO_country_code === geo.id.toString()
 		)[0];
@@ -141,7 +156,8 @@ const App = () => {
 			<Navbar countries={countryList} updateCountryName={updateCountryName} />
 			<Container className={classes.mainLg} maxWidth="false">
 				{selectedCountry ? <CountryModal country={selectedCountry} stats={countryStats}/> : null}
-				<Map clickCountry={clickCountry} selectedCountry={selectedCountry} />
+				<Map clickCountry={clickCountry} handleHover={handleHover} selectedCountry={selectedCountry} />
+
 				{selectedCountry ? (
 					<div className={classes.newsLg}>
 						{statusCode === "200" ? (
@@ -158,7 +174,7 @@ const App = () => {
 			</Container>
 			<Container className={classes.mainSm} maxWidth="false">
 				{selectedCountry ? <CountryModal country={selectedCountry} stats={countryStats}/> : null}
-				<Map clickCountry={clickCountry} selectedCountry={selectedCountry} />
+				<Map clickCountry={clickCountry} handleHover={handleHover} selectedCountry={selectedCountry} />
 				{selectedCountry ? (
 					<div className={classes.newsSm}>
 						{statusCode === "200" ? (

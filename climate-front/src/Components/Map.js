@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
 	ComposableMap,
 	ZoomableGlobe,
@@ -7,6 +7,8 @@ import {
 	Markers,
 	Marker,
 } from "react-simple-maps";
+import { geoPath } from "d3-geo";
+import { geoTimes } from "d3-geo-projection";
 
 import "./styles/Map.css";
 
@@ -15,7 +17,7 @@ const mapStyles = {
 	height: "100%",
 };
 
-const Map = ({ clickCountry, selectedCountry }) => {
+const Map = ({ clickCountry, selectedCountry, handleHover }) => {
 	return (
 		<div className="map-container">
 			<ComposableMap
@@ -39,8 +41,10 @@ const Map = ({ clickCountry, selectedCountry }) => {
 						{(geos, proj) =>
 							geos.map((geo, i) => (
 								<Geography
+									onMouseEnter={(e) => handleHover(geo, e)}
+									onMouseLeave={(e) => handleHover("", e)}
 									className="geography"
-									onClick={() => clickCountry(geo)}
+									onClick={(e) => clickCountry(geo, e)}
 									key={geo.id + i}
 									geography={geo}
 									projection={proj}
@@ -55,12 +59,8 @@ const Map = ({ clickCountry, selectedCountry }) => {
 									}}
 								/>
 							))
-						}
-
-
-			            
+						}   
 					</Geographies>
-
 				</ZoomableGlobe>
 			</ComposableMap>
 		</div>
