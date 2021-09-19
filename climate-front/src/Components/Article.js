@@ -6,8 +6,11 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Loading from "./Loading";
+import LinkIcon from '@mui/icons-material/Link';
+
 
 export default function ImgMediaCard({ article }) {
+
 	return (
 		<Card className="article">
 			<a className="article-link" href={article.url} target="_blank">
@@ -24,7 +27,8 @@ export default function ImgMediaCard({ article }) {
 						variant="h5"
 						component="div"
 						className="article-title">
-						{article.title} - {article.author}
+						{article.title} - {article.author}  <LinkIcon 
+							sx={{ ':hover': {boxShadow: 6, color:'success.main'}}}></LinkIcon>
 					</Typography>
 					<Typography variant="body2" color="text.secondary">
 						{article.description}
