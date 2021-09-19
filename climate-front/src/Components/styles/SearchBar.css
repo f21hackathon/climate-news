@@ -1,0 +1,16 @@
+.search-option {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.search-image {
+	width: 10%;
+	border-radius: 2px;
+}
+
+.search-text {
+	width: 80%;
+}

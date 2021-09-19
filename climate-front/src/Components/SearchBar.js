@@ -15,7 +15,6 @@ const FreeSoloCreateOption = ({
 	const [value, setValue] = useState(selectedCountry);
 
 	useEffect(() => {
-		console.log("INPUT VALUE: ", value);
 		setSelectedCountry(value);
 		searchCountry(value.country);
 	}, [value]);
@@ -71,7 +70,18 @@ const FreeSoloCreateOption = ({
 				// Regular option
 				return option.country;
 			}}
-			renderOption={(props, option) => <li {...props}>{option.country}</li>}
+			renderOption={(props, option) => (
+				<li {...props}>
+					<div className="search-option">
+						<img
+							src={option.image}
+							alt={option.image}
+							className="search-image"
+						/>
+						<p className="search-text">{option.country}</p>
+					</div>
+				</li>
+			)}
 			sx={{ width: 300 }}
 			freeSolo
 			renderInput={(params) => (
