@@ -6,6 +6,7 @@
 	max-height: 100vh;
 	background-image: url("https://cabins-seeds.s3.amazonaws.com/smooth_stars.gif");
 	background-size: 2000px 1000px;
+	z-index: -10;
 }
 
 .app-container {

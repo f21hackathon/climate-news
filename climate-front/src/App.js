@@ -7,17 +7,32 @@ import Navbar from "./Components/Navbar";
 import Loading from "./Components/Loading";
 import LoadingCards from "./Components/LoadingCards";
 import NoArticle from "./Components/NoArticle";
+import CountryModal from "./Components/CountryModal";
+import CountryHover from "./Components/CountryHover";
+
 import { countryList } from "./countryList";
 
 import "./App.css";
-import CountryModal from "./Components/CountryModal";
 
 const App = () => {
 	const [articles, setArticles] = useState([]);
 	const [selectedCountry, setSelectedCountry] = useState("");
 	const [statusCode, setStatusCode] = useState("");
+	const [hover, setHover] = useState("");
+	const [stats, setStats] = useState([]);
 
-	console.log("STATUS CODE: ", statusCode);
+	const handleHover = (geo, e) => {
+		if (geo.id) {
+			const foundCountry = countryList.filter(
+				(x) => x.three_digit_ISO_country_code === geo.id.toString()
+			)[0];
+
+			setHover(foundCountry.country);
+		} else {
+			setHover("");
+		}
+		console.log("HOVER COUNTRY: ", hover);
+	};
 
 	const updateCountryName = (countryInput) => {
 		setSelectedCountry("SELECTED: ", countryInput);
@@ -47,9 +62,16 @@ const App = () => {
 			<Navbar countries={countryList} updateCountryName={updateCountryName} />
 
 			<div className="app-container">
+				{/* CountryHover not showing for some reason */}
+				{/* <CountryHover hover={hover} /> */}
+
 				{selectedCountry ? <CountryModal country={selectedCountry} /> : null}
 
-				<Map clickCountry={clickCountry} selectedCountry={selectedCountry} />
+				<Map
+					handleHover={handleHover}
+					clickCountry={clickCountry}
+					selectedCountry={selectedCountry}
+				/>
 				{selectedCountry ? (
 					<div className="news-container">
 						{statusCode === "200" ? (

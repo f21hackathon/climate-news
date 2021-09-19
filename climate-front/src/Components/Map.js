@@ -20,7 +20,7 @@ const mapStyles = {
 
 var countryDetails = require("../country_details.js");
 
-const Map = ({ clickCountry, selectedCountry }) => {
+const Map = ({ clickCountry, selectedCountry, handleHover }) => {
 	// const [zoom, setZoom] = useState(1);
 	// const [center, setCenter] = useState([0, 0]);
 
@@ -61,6 +61,8 @@ const Map = ({ clickCountry, selectedCountry }) => {
 						{(geos, proj) =>
 							geos.map((geo, i) => (
 								<Geography
+									onMouseEnter={(e) => handleHover(geo, e)}
+									onMouseLeave={(e) => handleHover("", e)}
 									className="geography"
 									onClick={(e) => clickCountry(geo, e)}
 									key={geo.id + i}
@@ -80,7 +82,7 @@ const Map = ({ clickCountry, selectedCountry }) => {
 						}
 					</Geographies>
 
-					<Markers>
+					{/* <Markers>
 						<Marker
 							marker={{ coordinates: [-153.2917758, 67.75961636] }}
 							style={{
@@ -99,7 +101,7 @@ const Map = ({ clickCountry, selectedCountry }) => {
 								}}
 							/>
 						</Marker>
-					</Markers>
+					</Markers> */}
 				</ZoomableGlobe>
 			</ComposableMap>
 		</div>
