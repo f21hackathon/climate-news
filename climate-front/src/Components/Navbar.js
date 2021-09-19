@@ -2,6 +2,7 @@ import * as React from "react";
 import { useState } from "react";
 import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
+import { makeStyles } from "@material-ui/styles";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
@@ -51,6 +52,23 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 	},
 }));
 
+const useStyles = makeStyles((theme) => ({
+	logoLg: {
+		display: "none",
+		[theme.breakpoints.up("sm")]: {
+			display: "block",
+			flexGrow: 1
+		}
+	},
+	logoSm: {
+		display: "block",
+		[theme.breakpoints.up("xs")]: {
+			display: "none",
+			flexGrow: 1
+		}
+	}
+}))
+
 const Navbar = ({ countries }) => {
 	// Handles updating state when something is typed in the search bar
 	const [country, setCountry] = useState("");
@@ -66,6 +84,8 @@ const Navbar = ({ countries }) => {
 	// 	setCountry(e.target.value);
 	// };
 
+	const classes = useStyles();
+
 	return (
 		<Box sx={{ flexGrow: 1 }}>
 			<AppBar position="static" style={{ background: "#219fff" }}>
@@ -74,8 +94,15 @@ const Navbar = ({ countries }) => {
 						variant="h6"
 						noWrap
 						component="div"
-						sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}>
-						<u>Climate News</u>
+						className={classes.logoLg}>
+						Climate News
+					</Typography>
+					<Typography
+						variant="h6"
+						noWrap
+						component="div"
+						className={classes.logoSm}>
+						CN	
 					</Typography>
 					{/* <Search>
 						<SearchIconWrapper>
