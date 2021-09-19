@@ -17,3 +17,15 @@ video {
 	object-fit: cover;
 	position: absolute;
 }
+
+
+/* added custom styling for video to be replace by static image on mobile */
+@media (max-width: 767px) {
+    #videoBG {
+        display: none;
+    }
+    body {
+        background: url('staticStars.JPG');
+        background-size: cover;
+    }
+}
