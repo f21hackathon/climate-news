@@ -12,6 +12,7 @@ import { countryList } from "./countryList";
 import "./App.css";
 import CountryModal from "./Components/CountryModal";
 
+
 const App = () => {
 	const [articles, setArticles] = useState([]);
 	const [selectedCountry, setSelectedCountry] = useState("");
@@ -23,6 +24,8 @@ const App = () => {
 	const updateCountryName = (countryInput) => {
 		setSelectedCountry("SELECTED: ", countryInput);
 	};
+
+
 
 	// Get climate stats for given country
 	const getCountryStats = async (country) => {
@@ -51,8 +54,19 @@ const App = () => {
 		setSelectedCountry(foundCountry);
 		getNewsData(foundCountry.country);
 		getCountryStats(foundCountry.country);
+		updateClimateNewsHeader(foundCountry.country);
 	};
 
+	// update "Climate News" header with selected country
+	const updateClimateNewsHeader = (country) => {
+		let newTitle = country + " Climate News";
+
+		window.onload = function setName(country){
+			document.getElementById("NewsCardsHeader").innerHTML = newTitle;
+			console.log('working', newTitle);
+		};
+	};
+	
 	return (
 		<div className="App">
 			<Navbar countries={countryList} updateCountryName={updateCountryName} />
@@ -65,7 +79,7 @@ const App = () => {
 					<div className="news-container">
 						{statusCode === "200" ? (
 							articles.length > 0 ? (
-								<Articles articles={articles} />
+								<Articles articles={articles} country={selectedCountry}/>
 							) : (
 								<NoArticle country={selectedCountry} />
 							)
