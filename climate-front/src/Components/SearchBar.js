@@ -36,7 +36,7 @@ const FreeSoloCreateOption = ({ countries }) => {
 				if (inputValue !== "" && !isExisting) {
 					filtered.push({
 						inputValue,
-						country: `Add "${inputValue}"`,
+						country: `No results for "${inputValue}"`,
 					});
 				}
 
