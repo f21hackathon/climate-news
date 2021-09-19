@@ -114,10 +114,6 @@ async function loadNewsArticles(country) {
 
 /********************* API methods *********************/
 
-// Using multiple API keys since we are hitting limits often
-//const NEWS_API_KEY = "5612223de971402996a0a1f3130c00d2"
-//const NEWS_API_KEY = "3a09f01bf6174499b438bfaa14eea1f5"
-//const NEWS_API_KEY = "364a33768ecd4c6691bc0da6e4da0800";
 const NEWS_API_KEY = "14ec7673538348e9a11dbcafc7770f83";
 
 // Queries NewsAPI for articles for given country

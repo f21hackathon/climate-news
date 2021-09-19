@@ -32,19 +32,6 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 const Navbar = ({ countries }) => {
-	// Handles updating state when something is typed in the search bar
-
-	// // Handles on enter
-	// const handleSubmit = (e) => {
-	// 	e.preventDefault();
-	// 	console.log("COUNRY: ", country);
-	// };
-
-	// const handleChange = (e) => {
-	// 	e.preventDefault();
-	// 	setCountry(e.target.value);
-	// };
-
 	const classes = useStyles();
 
 	return (
