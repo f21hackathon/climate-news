@@ -14,6 +14,7 @@ import { makeStyles } from "@material-ui/styles";
 import "./App.css";
 import CountryModal from "./Components/CountryModal";
 
+
 const App = () => {
 	const [articles, setArticles] = useState([]);
 	const [selectedCountry, setSelectedCountry] = useState("");
@@ -25,6 +26,8 @@ const App = () => {
 	const updateCountryName = (countryInput) => {
 		setSelectedCountry("SELECTED: ", countryInput);
 	};
+
+
 
 	// Get climate stats for given country
 	const getCountryStats = async (country) => {
@@ -149,7 +152,7 @@ const App = () => {
 					<div className={classes.newsSm}>
 						{statusCode === "200" ? (
 							articles.length > 0 ? (
-								<Articles articles={articles} />
+								<Articles articles={articles} country={selectedCountry}/>
 							) : (
 								<NoArticle country={selectedCountry} />
 							)

@@ -1,56 +1,13 @@
 import * as React from "react";
-import { useState } from "react";
-import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import { makeStyles } from "@material-ui/styles";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import InputBase from "@mui/material/InputBase";
-import SearchIcon from "@mui/icons-material/Search";
 import FreeSoloCreateOption from "./SearchBar";
+import earth from "./styles/earth.png"
 
-const Search = styled("div")(({ theme }) => ({
-	position: "relative",
-	borderRadius: theme.shape.borderRadius,
-	backgroundColor: alpha(theme.palette.common.white, 0.15),
-	"&:hover": {
-		backgroundColor: alpha(theme.palette.common.white, 0.25),
-	},
-	marginLeft: 0,
-	width: "100%",
-	[theme.breakpoints.up("sm")]: {
-		marginLeft: theme.spacing(1),
-		width: "auto",
-	},
-}));
-
-const SearchIconWrapper = styled("div")(({ theme }) => ({
-	padding: theme.spacing(0, 2),
-	height: "100%",
-	position: "absolute",
-	pointerEvents: "none",
-	display: "flex",
-	alignItems: "center",
-	justifyContent: "center",
-}));
-
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-	color: "inherit",
-	"& .MuiInputBase-input": {
-		padding: theme.spacing(1, 1, 1, 0),
-		// vertical padding + font size from searchIcon
-		paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-		transition: theme.transitions.create("width"),
-		width: "100%",
-		[theme.breakpoints.up("sm")]: {
-			width: "32ch",
-			"&:focus": {
-				width: "40ch",
-			},
-		},
-	},
-}));
+import "./styles/Navbar.css";
 
 const useStyles = makeStyles((theme) => ({
 	logoLg: {
@@ -71,7 +28,6 @@ const useStyles = makeStyles((theme) => ({
 
 const Navbar = ({ countries }) => {
 	// Handles updating state when something is typed in the search bar
-	const [country, setCountry] = useState("");
 
 	// // Handles on enter
 	// const handleSubmit = (e) => {
@@ -103,19 +59,11 @@ const Navbar = ({ countries }) => {
 						component="div"
 						className={classes.logoSm}>
 						CN	
+						<img src={earth} alt="Logo" className="logo"/>
 					</Typography>
-					{/* <Search>
-						<SearchIconWrapper>
-							<SearchIcon />
-						</SearchIconWrapper> */}
-						{/* <StyledInputBase
-							placeholder="Search for a country"
-							inputProps={{ "aria-label": "search" }}
-							onChange={(e) => handleChange(e)}
-							onSubmit={(e) => handleSubmit(e)}
-						/> */}
-						<FreeSoloCreateOption countries={countries} />
-					{/* </Search> */}
+
+					<FreeSoloCreateOption countries={countries} />
+
 				</Toolbar>
 			</AppBar>
 		</Box>
