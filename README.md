@@ -3,7 +3,7 @@ Global news web application
 
 
 <!-- ABOUT THE PROJECT -->
-## About Climate News
+## ![Globe](icon.jpg) About Climate News
 
 <!-- ![{example use gif}][example-use] -->
 
