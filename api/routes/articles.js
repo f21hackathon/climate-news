@@ -1,7 +1,7 @@
 const express = require("express");
 const router = require("express").Router();
 
-const { Article, addArticle, findArticles } = require("../models/model.js");
+const { Article, addArticle, findArticles } = require("../models/articles.js");
 
 // ---------------------------------- CRUD ROUTES ----------------------------------
 // Create URL: http://localhost:5000/articles

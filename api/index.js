@@ -1,17 +1,15 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const axios = require("axios");
 
 const app = express();
 const PORT = 5000;
-
-var funcs = require("./models/model.js");
 
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(cors());
 
+// Routes
 app.use("/articles", require("./routes/articles.js"));
 app.use("/climate-data", require("./routes/climate-data"));
 
@@ -23,34 +21,8 @@ app.use((err, req, res, next) => {
 	res.status.send(`500 - Server Error`);
 });
 
+// Default port on Heroku is port 443
 app.listen(process.env.PORT || PORT, () => {
 	console.log(`Server is listening on port: ${PORT}`);
 });
 
-/*
-const country = "Mexico";
-
-async function getNewsArticles(country) {
-	const NEWS_API_KEY = "5612223de971402996a0a1f3130c00d2"
-	const URL = `https://newsapi.org/v2/everything?q=climate ` +
-		`OR energy OR environment OR global warming OR climate AND ${country} ` + 
-		`change&pageSize=100&from=2021&sortBy=relevancy&apiKey=${NEWS_API_KEY}`;
-
-	try {
-		return await axios.get(URL);
-	} catch (err) {
-		process.stdout.write("Failed to retrieve news articles...\n");
-	}
-}
-
-getNewsArticles(country)
-	.then(res => {
-		for (var i=0; i < res.data.articles.length; i++)
-		{
-			funcs.addArticle(country, res.data.articles[i]);
-		}
-	})
-	.catch(err => {
-		console.log("Something went wrong...\n", err);
-	});
-	*/
