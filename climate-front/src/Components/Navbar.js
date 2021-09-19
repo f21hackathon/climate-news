@@ -52,7 +52,7 @@ const Navbar = ({ countries }) => {
 						component="div"
 						className={classes.logoLg}>
 						<img src={earth} alt="Logo" className="logo"/>
-						Climate News
+						Climate News <em id='tagline'>- Click or search for a country to view climate news and statistics.</em>
 					</Typography>
 					<Typography
 						variant="h6"
