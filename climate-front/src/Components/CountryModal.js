@@ -14,7 +14,7 @@ const CountryModal = (props) => {
 			height: "100%",
 			width: "100%"
 		},
-		statsLg: {
+		countryModalContainerLg: {
 			overflow: "hidden",
 			overflowY: "scroll",
 			display: "none",
@@ -31,7 +31,7 @@ const CountryModal = (props) => {
 				display: "flex"
 			}
 		},
-		statsSm: {
+		countryModalContainerSm: {
 			overflow: "hidden",
 			overflowY: "scroll",
 			display: "flex",
@@ -55,7 +55,7 @@ const CountryModal = (props) => {
 			className={classes.main}
 		>
 		<Container
-			className={classes.statsLg}
+			className={classes.countryModalContainerLg}
 			maxWidth="false"
 		>
 			<div className="country-name-container">
@@ -69,7 +69,7 @@ const CountryModal = (props) => {
 
 		</Container>
 		<Container
-			className={classes.statsSm}
+			className={classes.countryModalContainerSm}
 			maxWidth="false"
 		>
 			<div className="country-name-container">
