@@ -56,28 +56,11 @@ const Map = ({ clickCountry, selectedCountry }) => {
 								/>
 							))
 						}
+
+
+			            
 					</Geographies>
 
-					<Markers>
-						<Marker
-							marker={{ coordinates: [-153.2917758, 67.75961636] }}
-							style={{
-								default: { fill: "#FF5722" },
-								hover: { fill: "#FFFFFF" },
-								pressed: { fill: "#FF5722" },
-							}}>
-							<circle
-								cx={0}
-								cy={0}
-								r={5}
-								style={{
-									stroke: "#FF5722",
-									strokeWidth: 3,
-									opacity: 0.9,
-								}}
-							/>
-						</Marker>
-					</Markers>
 				</ZoomableGlobe>
 			</ComposableMap>
 		</div>

@@ -1,5 +1,6 @@
 import * as React from "react";
 import AppBar from "@mui/material/AppBar";
+import { makeStyles } from "@material-ui/styles";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
@@ -7,6 +8,23 @@ import FreeSoloCreateOption from "./SearchBar";
 import earth from "./styles/earth.png"
 
 import "./styles/Navbar.css";
+
+const useStyles = makeStyles((theme) => ({
+	logoLg: {
+		display: "none",
+		[theme.breakpoints.up("sm")]: {
+			display: "block",
+			flexGrow: 1
+		}
+	},
+	logoSm: {
+		display: "block",
+		[theme.breakpoints.up("xs")]: {
+			display: "none",
+			flexGrow: 1
+		}
+	}
+}))
 
 const Navbar = ({ countries }) => {
 	// Handles updating state when something is typed in the search bar
@@ -22,6 +40,8 @@ const Navbar = ({ countries }) => {
 	// 	setCountry(e.target.value);
 	// };
 
+	const classes = useStyles();
+
 	return (
 		<Box sx={{ flexGrow: 1 }}>
 			<AppBar position="static" style={{ background: "#219fff" }}>
@@ -30,10 +50,16 @@ const Navbar = ({ countries }) => {
 						variant="h6"
 						noWrap
 						component="div"
-						sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}>
+						className={classes.logoLg}>
 						<img src={earth} alt="Logo" className="logo"/>
-						<b>Climate News</b>
-						
+						Climate News <em id='tagline'>- Click or search for a country to view climate news and statistics.</em>
+					</Typography>
+					<Typography
+						variant="h6"
+						noWrap
+						component="div"
+						className={classes.logoSm}>
+						<img src={earth} alt="Logo" className="logo"/>
 					</Typography>
 
 					<FreeSoloCreateOption countries={countries} />
