@@ -16,7 +16,7 @@ The code that was submitted without any further modification can be found [here]
 ## Usage
 The application is used to share news about climate and environmental statistics from countries across the globe.
 
-No account or authentication is required to view a demonstration of the app, which can be found hosted on Heroku [here](https://global-climate-news.herokuapp.com/).
+No account or authentication is required to view a demonstration of the app, which can be found hosted on Heroku [here](https://global-climate-news-dev.herokuapp.com/).
 
 
 <!-- A demonstration of the app can be found in the following youtube video: -->
@@ -49,7 +49,7 @@ In order to make changes locally to the Climate News project, you must first hav
 
 2. Enter the following command to use Git to clone this repository to your local machine.
 ```sh
-git clone https://https://github.com/f21hackathon/climate-news.git
+git clone https://github.com/f21hackathon/climate-news.git
 ```
 3. Navigate into the back end folder (api) and install this repository's back end dependencies.
 ```sh
